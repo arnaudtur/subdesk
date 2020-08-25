@@ -1,0 +1,27 @@
+<div class="card col-6 mx-auto", style="padding: 10px; margin-top: 50px; border-radius:5%;">
+  <div style="text-align:center;">
+
+    <h2>Offer Creation</h2>
+  </div>
+  <%= simple_form_for @offer do |f| %>
+    <%= f.input :name  %>
+    <%= f.input :description  %>
+    <%= f.input :price  %>
+    <%= f.input :room  %>
+    <%= f.input :address  %>
+    <%= f.input :total_seats  %>
+    <%= f.input :seats  %>
+    <%= f.input :size  %>
+    <%= f.input :question1  %>
+    <%= f.input :question2  %>
+    <%= f.input :question3  %>
+      <div style="text-align:center;">
+        <div class="form-actions">
+
+          <%= f.button :submit, class:"btn btn-outline-primary" %>
+        </div>
+      </div>
+    <%end%>
+   </div>
+</div>
+
