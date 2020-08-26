@@ -1,0 +1,45 @@
+<div class="container justify-content-center mt-3">
+<%= form_tag offers_path, method: :get do %>
+  <div class="d-flex">
+    <div>
+    <%= text_field_tag :address,
+      params[:address],
+      class: "form-control",
+      placeholder: "city"
+    %>
+    </div>
+    <div>
+
+        <%= text_field_tag :price,
+      params[:price],
+      class: "form-control",
+      placeholder: "price"
+    %>
+    </div>
+    <div>
+
+        <%= text_field_tag :seats,
+      params[:seats],
+      class: "form-control",
+      placeholder: "seats"
+    %>
+    </div>
+    <div>
+
+        <%= text_field_tag :rooms,
+      params[:rooms],
+      class: "form-control",
+      placeholder: "rooms"
+    %>
+    </div>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
+</div>
+
+<ul>
+<%@offers.each do |offer|%>
+  <li><%= offer.address%>
+  <%= offer.name%>
+  </li><%end%>
+</ul>
