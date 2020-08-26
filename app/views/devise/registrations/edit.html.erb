@@ -10,17 +10,54 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password,
+    <%= f.input :password,label: "Mot de passe",
                 hint: "leave it blank if you don't want to change it",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
+    <%= f.input :password_confirmation, label: "Confirmation du mot de passe",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
+    <%= f.input :current_password,label: "Mot de passe actuel",
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+    <%= f.input :name, label: "Nom de l'entreprise",
+                required: true,
+                input_html: { autocomplete: "name" } %>
+    <%= f.input :hq_address, label: "Adresse de l'entreprise",
+                required: true,
+                input_html: { autocomplete: "hq_address" } %>
+    <%= f.input :year_of_creation, label: "Année de création",
+                required: true,
+                input_html: { autocomplete: "year_of_creation" } %>
+    <%= f.input :description, label: "Description",
+                required: true,
+                input_html: { autocomplete: "description" } %>
+    <%= f.input :number_of_employees, label: "Nombre de collaborateurs",
+                required: true,
+                input_html: { autocomplete: "number_of_employees" } %>
+    <%= f.input :average_age, label: "L'âge moyen des collaborateurs",
+                required: true,
+                input_html: { autocomplete: "average_age" } %>
+    <%= f.input :field, label: "Secteur",
+                required: true,
+                input_html: { autocomplete: "field" } %>
+    <%= f.input :weblink, label: "Lien du site internet de l'entreprise",
+                required: true,
+                input_html: { autocomplete: "weblink" } %>
+    <%= f.input :criteria1, label: "Critère n°1",
+                required: true,
+                input_html: { autocomplete: "criteria1" } %>
+    <%= f.input :criteria2, label: "Critère n°2",
+                required: true,
+                input_html: { autocomplete: "criteria2" } %>
+    <%= f.input :criteria3, label: "Critère n°3",
+                required: true,
+                input_html: { autocomplete: "criteria3" } %>
+    <%= f.input :criteria4, label: "Critère n°4",
+                required: true,
+                input_html: { autocomplete: "criteria4" } %>
+
   </div>
 
   <div class="form-actions">
