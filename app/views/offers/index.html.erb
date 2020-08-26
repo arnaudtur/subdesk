@@ -37,9 +37,17 @@
 </div>
 </div>
 
-<ul>
-<%@offers.each do |offer|%>
-  <li><%= offer.address%>
-  <%= offer.name%>
-  </li><%end%>
-</ul>
+  <ul>
+  <div class="d-flex">
+  <%@offers.each do |offer|%>
+    <div class="card-product" style="width: 18rem; border-radius:8px; margin:10px; padding:10px;">
+    <li>
+      <p><strong>address:</strong><%= offer.address%></p>
+      <p><strong>name:</strong><%= offer.name%></p>
+      <p><strong>seats:</strong><%= offer.seats%></p>
+      <p><strong>rooms:</strong><%= offer.room%></p>
+    </li>
+    </div>
+  <%end%>
+  </ul>
+</div>

@@ -1,0 +1,20 @@
+<html>
+
+
+
+
+<div class="text-center" style="margin:25px;">
+  <h4><strong>le nom de l'offre:</strong> <%=@offer.name%></h4>
+  <strong><span style="text-decoration: underline;">la description de l'offre: </span></strong><%=@offer.description%>
+</div>
+<div class="card-product d-block", style="height:750px; margin:25px; padding:50px;">
+
+    <p style="font-size: 25px;"><strong>le nombre de seats: </strong><%=@offer.seats%></p>
+    <p style="font-size: 25px;"><strong>le prix de l'annonce: </strong><%=@offer.price%></p>
+    <p style="font-size: 25px;"><strong>l'addresse de l'annonce: </strong><%=@offer.address%></p>
+    <p style="font-size: 25px;"><strong>l'email du landlord: </strong><%=@offer.user.email%></p>
+    <br>
+    <%= link_to 'Edit offer', edit_offer_path, class:"btn btn-outline-primary" %>
+</div>
+
+</html>
