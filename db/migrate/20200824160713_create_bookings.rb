@@ -6,7 +6,6 @@ class CreateBookings < ActiveRecord::Migration[6.0]
       t.string :status
       t.datetime :start_date
       t.datetime :end_date
-      t.integer :matching_rate
       t.text :answer1
       t.text :answer2
       t.text :answer3

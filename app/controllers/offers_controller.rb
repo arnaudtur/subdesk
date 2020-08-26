@@ -1,5 +1,6 @@
 class OffersController < ApplicationController
 
+
   def index
     @offers = policy_scope(Offer)
     if (params[:address].present? || params[:price].present? || params[:seats].present? || params[:rooms].present?)
@@ -19,6 +20,8 @@ class OffersController < ApplicationController
     else
       @offers = policy_scope(Offer)
     end
+    @user_logged = current_user
+    # matching_r
   end
 
   def edit
@@ -50,12 +53,14 @@ class OffersController < ApplicationController
     @offer.user = @user
     @offer.status = 'Active'
     authorize @offer
+    # matching_r
     if @offer.save
       redirect_to root_path
     else
       render :new
     end
   end
+
 
   private
 

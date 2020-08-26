@@ -11,6 +11,7 @@ class CreateOffers < ActiveRecord::Migration[6.0]
       t.integer :seats
       t.integer :room
       t.integer :size
+      t.integer :matching_rate
       t.text :question1
       t.text :question2
       t.text :question3

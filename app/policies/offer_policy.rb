@@ -29,4 +29,7 @@ class OfferPolicy < ApplicationPolicy
       true
     end
 
+    def matching_r?
+      true
+    end
 end

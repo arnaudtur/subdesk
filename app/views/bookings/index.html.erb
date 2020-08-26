@@ -36,7 +36,12 @@
   <br>
   <br>
 
-  <div class="card-product justify-content-left">
+
+<% offer.all.each do |offer| %>
+<%= offer.user.name %>
+<% end %>
+
+<!--   <div class="card-product justify-content-left">
     <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
     <div class="card-product-infos">
       <h2>Company Name</h2>
@@ -59,4 +64,4 @@
       <p>Product description with <strong>relevant info</strong> only.</p>
     </div>
   </div>
-</div>
+</div> -->
