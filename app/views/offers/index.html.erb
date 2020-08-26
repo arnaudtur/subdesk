@@ -39,14 +39,15 @@
   <ul>
   <div class="d-flex">
   <%@offers.each do |offer|%>
-    <div class="card-product" style="width: 18rem; border-radius:8px; margin:10px; padding:10px;">
-    <li>
-      <p><strong>address:</strong><%= offer.address%></p>
-      <p><strong>name:</strong><%= offer.name%></p>
-      <p><strong>seats:</strong><%= offer.seats%></p>
-      <p><strong>rooms:</strong><%= offer.room%></p>
-      <p><strong>Matching Rate:</strong><%= offer.matching_r(@user_logged) %></p>
-    </li>
+    <div class="card-product" style="width: 18rem; border-radius:8px; margin:10px; padding:10px; height:12rem;">
+      <div class="d-inline">
+        <p><strong>address:</strong><%= offer.address%></p>
+        <p><strong>name:</strong><%= offer.name%></p>
+        <p><strong>seats:</strong><%= offer.seats%></p>
+        <p><strong>rooms:</strong><%= offer.room%></p>
+        <p><strong>Matching Rate:</strong><%= offer.matching_r(@user_logged) %></p>
+        <%= link_to 'Check offer', offer_path(offer.id), class:"btn btn-outline-primary" %>
+      </div>
     </div>
   <%end%>
   </ul>
