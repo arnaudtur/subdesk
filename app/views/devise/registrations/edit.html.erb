@@ -33,6 +33,8 @@
     <%= f.input :description, label: "Description",
                 required: true,
                 input_html: { autocomplete: "description" } %>
+    <%= f.input :photo, as: :file %>
+
     <%= f.input :number_of_employees, label: "Nombre de collaborateurs",
                 required: true,
                 input_html: { autocomplete: "number_of_employees" } %>
