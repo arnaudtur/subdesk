@@ -1,30 +1,43 @@
 class OffersController < ApplicationController
 
   def index
-
     @offers = policy_scope(Offer)
     if (params[:address].present? || params[:price].present? || params[:seats].present? || params[:rooms].present?)
-
       @offers = Offer.where("name Ilike ?", "%#{params[:address]}%") if params[:address]
-
       price = Offer.where("price ILIKE :price")
       min_price = params[:price].to_i - 300
       max_price = params[:price].to_i + 300
       @offers = @offers.where("price > ?", min_price).where("price < ?", max_price) if params[:price].present?
-
       seats = Offer.where("seats ILIKE :seats")
       max_seats = params[:seats].to_i + 5
       min_seats = params[:seats].to_i - 5
       @offers = @offers.where("seats > ?", min_seats).where("seats < ?", max_seats) if params[:seats].present?
-
       rooms = Offer.where("rooms ILIKE :rooms")
       max_rooms = params[:rooms].to_i + 5
       min_rooms = params[:rooms].to_i - 5
       @offers = @offers.where("room > ?", min_rooms).where("room < ?", max_rooms) if params[:rooms].present?
-
     else
       @offers = policy_scope(Offer)
     end
+  end
+
+  def edit
+    @offer = Offer.find(params[:id])
+    authorize @offer
+  end
+
+  def update
+    @offer = Offer.find(params[:id])
+    @offer.update(params_offers)
+    authorize @offer
+
+    # no need for app/views/restaurants/update.html.erb
+    redirect_to offer_path(@offer)
+  end
+
+  def show
+    @offer = Offer.find(params[:id])
+    authorize @offer
   end
 
   def new
