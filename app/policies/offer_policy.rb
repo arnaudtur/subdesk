@@ -5,11 +5,16 @@ class OfferPolicy < ApplicationPolicy
     end
   end
 
+    def index?
+      true
+    end
+
     def create?
-    true
+      true
     end
 
     def new?
-    true
+      true
     end
+
 end
