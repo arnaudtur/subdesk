@@ -31,12 +31,11 @@ class OffersController < ApplicationController
     @offer = Offer.new
     authorize @offer
   end
-
   def create
     @offer = Offer.new(params_offers)
     @user = current_user
     @offer.user = @user
-    @offer.status = "Pending"
+    @offer.status = 'Active'
     authorize @offer
     if @offer.save
       redirect_to root_path
@@ -44,7 +43,6 @@ class OffersController < ApplicationController
       render :new
     end
   end
-
 
   private
 

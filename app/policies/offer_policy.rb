@@ -5,6 +5,7 @@ class OfferPolicy < ApplicationPolicy
     end
   end
 
+
     def index?
       true
     end

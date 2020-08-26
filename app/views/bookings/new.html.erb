@@ -1,0 +1,20 @@
+<div class="card col-6 mx-auto", style="padding: 10px; margin-top: 50px; border-radius:5%;">
+  <div style="text-align:center;">
+
+    <h2>Booking Creation</h2>
+  </div>
+  <%= simple_form_for [@offer, @booking] do |f| %>
+  <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+  <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+    <%= f.input :answer1  %>
+    <%= f.input :answer2  %>
+    <%= f.input :answer3  %>
+      <div style="text-align:center;">
+        <div class="form-actions">
+
+          <%= f.button :submit, class:"btn btn-outline-primary" %>
+        </div>
+      </div>
+    <%end%>
+   </div>
+</div>
