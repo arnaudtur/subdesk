@@ -37,31 +37,18 @@
   <br>
 
 
-<% offer.all.each do |offer| %>
-<%= offer.user.name %>
-<% end %>
+<% @bookings.each do |booking| %>
 
-<!--   <div class="card-product justify-content-left">
+
+  <div class="card-product justify-content-left">
     <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
     <div class="card-product-infos">
-      <h2>Company Name</h2>
-      <p>Product description with <strong>relevant info</strong> only.</p>
+      <h2>Name of the Office: <%= booking.offer.name %></h2>
+      <h2>Name of the Booker: <%= booking.user.name %></h2>
+      <p>Matching Rate :<strong> <%= booking.offer.matching_rate.class %></strong></p>
     </div>
   </div>
   <br>
-  <div class="card-product">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-    <div class="card-product-infos">
-      <h2>Company Name</h2>
-      <p>Product description with <strong>relevant info</strong> only.</p>
-    </div>
-  </div>
-  <br>
-  <div class="card-product">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-    <div class="card-product-infos">
-      <h2>Company Name</h2>
-      <p>Product description with <strong>relevant info</strong> only.</p>
-    </div>
-  </div>
-</div> -->
+  <% end %>
+</div>
+
