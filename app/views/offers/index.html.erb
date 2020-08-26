@@ -36,7 +36,6 @@
   <% end %>
 </div>
 </div>
-
   <ul>
   <div class="d-flex">
   <%@offers.each do |offer|%>
@@ -46,6 +45,7 @@
       <p><strong>name:</strong><%= offer.name%></p>
       <p><strong>seats:</strong><%= offer.seats%></p>
       <p><strong>rooms:</strong><%= offer.room%></p>
+      <p><strong>Matching Rate:</strong><%= offer.matching_r(@user_logged) %></p>
     </li>
     </div>
   <%end%>
