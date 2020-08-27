@@ -1,7 +1,10 @@
 class BookingsController < ApplicationController
   def index
     @bookings = policy_scope(Booking)
+    @user_logged = current_user
   end
+
+
 
 
   def new

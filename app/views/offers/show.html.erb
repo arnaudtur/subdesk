@@ -1,8 +1,4 @@
 <html>
-
-
-
-
 <div class="text-center" style="margin:25px;">
   <h4><strong>le nom de l'offre:</strong> <%=@offer.name%></h4>
   <strong><span style="text-decoration: underline;">la description de l'offre: </span></strong><%=@offer.description%>
@@ -14,7 +10,17 @@
     <p style="font-size: 25px;"><strong>l'addresse de l'annonce: </strong><%=@offer.address%></p>
     <p style="font-size: 25px;"><strong>l'email du landlord: </strong><%=@offer.user.email%></p>
     <br>
+    <% if @offer.user == current_user %>
     <%= link_to 'Edit offer', edit_offer_path, class:"btn btn-outline-primary" %>
+    <br><br>
+    <%= button_to "delete", {:controller => :offers,
+      :action => 'destroy', :id => @offer.id }, :method => :delete, class:"btn btn-outline-primary"  %>
+    <%else%>
+    <br><br>
+    <%= link_to 'Apply for booking', new_offer_booking_path(params[:id]), class:"btn btn-outline-primary" %>
+    <br>
+    <%end%>
+    <br>
+    <%= link_to 'Home', root_path, class:"btn btn-outline-primary" %>
 </div>
-
 </html>

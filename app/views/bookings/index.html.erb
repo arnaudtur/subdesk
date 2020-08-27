@@ -45,7 +45,7 @@
     <div class="card-product-infos">
       <h2>Name of the Office: <%= booking.offer.name %></h2>
       <h2>Name of the Booker: <%= booking.user.name %></h2>
-      <p>Matching Rate :<strong> <%= booking.offer.matching_rate.class %></strong></p>
+      <p>Matching Rate :<strong> <%= booking.offer.matching_r(@user_logged) %></strong></p>
 
     </div>
   </div>
