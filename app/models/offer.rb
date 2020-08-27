@@ -36,6 +36,6 @@ class Offer < ApplicationRecord
       matching +=1
     end
     # raise
-    matching_rate = ((1 / matching.to_f)*100).to_i
+    matching_rate = ((matching / 4 ) * 100).to_i
   end
 end
