@@ -4,7 +4,7 @@ class OffersController < ApplicationController
   def index
     @offers = policy_scope(Offer)
     if (params[:address].present? || params[:price].present? || params[:seats].present? || params[:rooms].present?)
-      @offers = Offer.where("name Ilike ?", "%#{params[:address]}%") if params[:address]
+      @offers = Offer.where("address Ilike ?", "%#{params[:address]}%") if params[:address]
       price = Offer.where("price ILIKE :price")
       min_price = params[:price].to_i - 300
       max_price = params[:price].to_i + 300
@@ -21,8 +21,9 @@ class OffersController < ApplicationController
       @offers = policy_scope(Offer)
     end
     @user_logged = current_user
-    # matching_r
-
+    @offers.each do |offer|
+      offer.rate = offer.matching_r(@user_logged).to_i
+    end
 
     @markers = @offers.geocoded.map do |offer|
       {
@@ -31,6 +32,8 @@ class OffersController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { offer: offer })
       }
     end
+
+    @offers = @offers.sort_by { |offer| offer.rate }.reverse
   end
 
   def edit
@@ -50,6 +53,12 @@ class OffersController < ApplicationController
   def show
     @offer = Offer.find(params[:id])
     authorize @offer
+
+    @markers = [{
+      lat: @offer.latitude,
+      lng: @offer.longitude,
+      infoWindow: render_to_string(partial: "info_window", locals: { offer: @offer })
+    }]
   end
 
   def new

@@ -1,9 +1,11 @@
 class Offer < ApplicationRecord
+  attr_accessor :rate
   belongs_to :user
+
 
   has_many_attached :photos
   has_many :bookings, dependent: :destroy
-  
+
   # validates :name, presence: true, length: { in: 15..100 }, uniqueness: true
   # validates :description, presence: true
   # validates :price, presence: true, numericality: true
@@ -34,6 +36,6 @@ class Offer < ApplicationRecord
       matching +=1
     end
     # raise
-    matching_rate = matching
+    matching_rate = ((1 / matching.to_f)*100).to_i
   end
 end
