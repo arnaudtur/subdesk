@@ -22,6 +22,15 @@ class OffersController < ApplicationController
     end
     @user_logged = current_user
     # matching_r
+
+
+    @markers = @offers.geocoded.map do |offer|
+      {
+        lat: offer.latitude,
+        lng: offer.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { offer: offer })
+      }
+    end
   end
 
   def edit

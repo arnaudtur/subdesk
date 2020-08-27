@@ -15,6 +15,9 @@ class Offer < ApplicationRecord
   # validates :question2, presence: true
   # validates :question3, presence: true
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   def matching_r(user_logged)
     matching = 0
     # logged_user = User.current
