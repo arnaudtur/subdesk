@@ -72,6 +72,6 @@ class OffersController < ApplicationController
   private
 
   def params_offers
-    params.require(:offer).permit(:status, :name, :price, :address, :description, :price, :total_seats, :seats, :room, :size, :question1, :question2, :question3)
+    params.require(:offer).permit(:status, :name, :price, :address, :description, :price, :total_seats, :seats, :room, :size, :question1, :question2, :question3, photos: [])
   end
 end
