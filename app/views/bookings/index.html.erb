@@ -38,28 +38,29 @@
 
 
 <% @bookings.each do |booking| %>
-<% if current_user == booking.user %>
-  <div class="card-product justify-content-left">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-    <div class="card-product-infos">
-      <span class="badge badge-pill badge-primary">Tenant</span>
-      <h2>Name of the Office: <%= booking.offer.name %></h2>
-      <h2>Name of the Booker: <%= booking.user.name %></h2>
-      <p>Matching Rate :<strong> <%= booking.offer.matching_r(@user_logged) %></strong></p>
+  <% if current_user == booking.user %>
+    <div class="card-product justify-content-left">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <div class="card-product-infos">
+        <span class="badge badge-pill badge-primary">Tenant</span>
+        <h2>Name of the Office: <%= booking.offer.name %></h2>
+        <h2>Name of the Booker: <%= booking.user.name %></h2>
+        <p>Matching Rate :<strong> <%= booking.offer.matching_r(@user_logged) %></strong></p>
+      </div>
     </div>
-  </div>
   <br>
 <% else %>
   <div class="card-product justify-content-left">
     <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
     <div class="card-product-infos">
-        <span class="badge badge-pill badge-warning">Landlord</span>
+      <span class="badge badge-pill badge-warning">Landlord</span>
       <h2>Name of the Office: <%= booking.offer.name %></h2>
       <h2>Name of the Booker: <%= booking.user.name %></h2>
       <p>Matching Rate :<strong> <%= booking.offer.matching_r(@user_logged) %></strong></p>
     </div>
   </div>
   <br>
+    <% end %>
   <% end %>
 </div>
 
