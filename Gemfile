@@ -29,6 +29,8 @@ gem 'redis', '~> 4.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'pundit'
 gem 'cloudinary'
+gem 'geocoder'
+
 
 gem 'devise'
 
