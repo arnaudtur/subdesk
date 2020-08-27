@@ -50,6 +50,12 @@ class OffersController < ApplicationController
   def show
     @offer = Offer.find(params[:id])
     authorize @offer
+
+    @markers = [{
+      lat: @offer.latitude,
+      lng: @offer.longitude,
+      infoWindow: render_to_string(partial: "info_window", locals: { offer: @offer })
+    }]
   end
 
   def new
