@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
   @user = User.find(params[:id])
+  @user = current_user
   authorize @user
   end
 
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
   end
 
 private
+
   def user_params
     params.require(:user).permit(:photo)
   end

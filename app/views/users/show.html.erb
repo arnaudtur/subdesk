@@ -1,65 +1,63 @@
-<!DOCTYPE html>
-<html>
-<body>
+<div class="user-header">
+<!--       <img src="https://logopond.com/logos/72617797fe9a821f33cecd740a5f9bf8.png" alt="Le logo" class="img_header" /> -->
 
-  <header class="user-header">
-    <div class="container flex-row">
-      <div class="logo_header">
-      <img src="https://logopond.com/logos/72617797fe9a821f33cecd740a5f9bf8.png" alt="Le logo" class="img_header" />
-      </div>
+<div class="my-auto">
+      <%= cl_image_tag @user.photo.key, class: "img_header" %>
       <div class="name_company_div">
-           <h1 class="name_company"><%=@user.name%></h1>
-      </div>
-      <div class="row h-100 justify-content-center align-items-center">
-          <nav>
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Profil</a>
-              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Annonces</a>
-            </div>
-          </nav>
+           <h2 class="c6"><%=@user.name%></h2>
       </div>
     </div>
-  </header>
-
-<div>
-  <i class="fas fa-map-marked-alt"> <%=@user.hq_address%></i>
+    <div class="d-flex p-4">
+      <i class="fab fa-cloudsmith pr-2"></i><h2 class="c5"><%=@user.field%></h2>
+      <i class="fas fa-map-marker pl-3 pr-2"></i><h2 class="c5"><%=@user.hq_address%></h2>
+    </div>
+    <div class="row align-items-center">
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Profil</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Annonces</a>
+          </div>
+        </nav>
+    </div>
 </div>
 
-
-<div class="row justify-content-center">
-<div class="card justify-content-center c1" style="width: 18rem;">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item text-center"><h4 class="c2">Année de Création</h4>
-      <h4 class="text-center c4"><%=@user.year_of_creation%></h4>
-    </li>
-    <li class="list-group-item text-center"><h4 class="c2">Nombre de collaborateurs</h4>
-      <h4 class="text-center c4"><%=@user.number_of_employees%></h4>
-    </li>
-        <li class="list-group-item text-center"><h4 class="c2">Âge moyen</h4>
-      <h4 class="text-center c4"><%=@user.average_age%> ans</h4>
-    </li>
-  </ul>
+<div class="row justify-content-between p-5">
+  <div class="col-md-4">
+    <div class="al-img-block d-flex align-items-center h-100">
+      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" height="100%" width="100%" style="object-fit: cover;">
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card justify-content-center">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item text-center"><h4 class="c2">Année de Création</h4>
+          <h4 class="text-center c4"><%=@user.year_of_creation%></h4>
+        </li>
+        <li class="list-group-item text-center"><h4 class="c2">Nombre de collaborateurs</h4>
+          <h4 class="text-center c4"><%=@user.number_of_employees%></h4>
+        </li>
+            <li class="list-group-item text-center"><h4 class="c2">Âge moyen</h4>
+          <h4 class="text-center c4"><%=@user.average_age%> ans</h4>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="al-txt-block">
+      <h2 class="mb-3 border-bottom">Qui sommes-nous ?</h2>
+      <p class="text-justify"><%=@user.description%></p>
+    </div>
+  </div>
 </div>
-</div>
-
+<!--
 <section class="al-content-block articles c3">
     <div class="container">
         <div class="row al-content-block-row">
             <div class="col-lg-6">
-                <div class="al-img-block d-flex align-items-center h-100">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" height="270" width="430">
-                </div>
             </div>
             <div class="col-lg-6">
-                <div class="al-txt-block">
-                    <h2 class="mb-3">Qui sommes-nous ?</h2>
-                    <p class="text-justify"><%=@user.description%></p>
-                </div>
             </div>
         </div>
         </div>
     </div>
-</section>
-
-</body>
-</html>
+</section> -->
