@@ -1,0 +1,36 @@
+<% @bookings.each do |booking| %>
+  <% if current_user == booking.user %>
+    <div class="card-product justify-content-left">
+      <%= cl_image_tag booking.offer.user.photo.key, class:"border border-primary"  %>
+      <div class="card-product-infos">
+        <div class="d-flex justify-content-between">
+          <span class="badge badge-pill badge-dark">Tenant</span>
+          <span class="badge badge-pill badge-dark justify-content-right"><%= booking.status %></span>
+        </div>
+        <h2><%= booking.offer.name %></h2>
+        <p>Entreprise : <strong><%= booking.offer.user.name %></strong></p>
+        <span class="badge badge-pill badge-success"> Matching <%= booking.offer.matching_r(@user_logged) %>%</span>
+      </div>
+    </div>
+  <br>
+<% else %>
+  <div class="card-product justify-content-left">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <div class="card-product-infos">
+      <div class="d-flex justify-content-between">
+        <span class="badge badge-pill badge-light">Landlord</span>
+        <span class="badge badge-pill badge-dark justify-content-right"><%= booking.status %></span>
+      </div>
+      <h2><%= booking.offer.name %></h2>
+      <p>Entreprise: <strong><%= booking.user.name %></strong></p>
+              <span class="badge badge-pill badge-warning"> Matching <%= booking.offer.matching_r(@user_logged) %>%</span>
+    </div>
+  </div>
+  <br>
+    <% end %>
+    <button type="button" class="btn btn-primary btn-sm">Accepter</button>
+    <button type="button" class="btn btn-secondary btn-sm">Refuser</button>
+    <br>
+    <br>
+  <% end %>
+
