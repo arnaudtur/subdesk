@@ -7,30 +7,42 @@
       <div class="logo_header">
       <img src="https://logopond.com/logos/72617797fe9a821f33cecd740a5f9bf8.png" alt="Le logo" class="img_header" />
       </div>
-      <div class="btn-group buts" role="group">
-        <button type="button" class="btn btn-outline-primary">Profil</button>
-        <button type="button" class="btn btn-outline-primary">Annonces</button>
+      <div class="name_company_div">
+           <h1 class="name_company"><%=@user.name%></h1>
+      </div>
+      <div class="row h-100 justify-content-center align-items-center">
+          <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Profil</a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Annonces</a>
+            </div>
+          </nav>
       </div>
     </div>
   </header>
 
+<div>
+  <i class="fas fa-map-marked-alt"> <%=@user.hq_address%></i>
+</div>
+
+
 <div class="row justify-content-center">
-<div class="card justify-content-center" style="width: 18rem;">
+<div class="card justify-content-center c1" style="width: 18rem;">
   <ul class="list-group list-group-flush">
-    <li class="list-group-item text-center"><h4>Année de Création</h4>
-      <span class="text-center">2017</span>
+    <li class="list-group-item text-center"><h4 class="c2">Année de Création</h4>
+      <h4 class="text-center c4"><%=@user.year_of_creation%></h4>
     </li>
-        <li class="list-group-item text-center"><h4>Nombre de collaborateurs</h4>
-      <span class="text-center">32</span>
+    <li class="list-group-item text-center"><h4 class="c2">Nombre de collaborateurs</h4>
+      <h4 class="text-center c4"><%=@user.number_of_employees%></h4>
     </li>
-        <li class="list-group-item text-center"><h4>Age moyen</h4>
-      <span class="text-center">27 ans</span>
+        <li class="list-group-item text-center"><h4 class="c2">Âge moyen</h4>
+      <h4 class="text-center c4"><%=@user.average_age%> ans</h4>
     </li>
   </ul>
 </div>
 </div>
 
-<section class="al-content-block articles">
+<section class="al-content-block articles c3">
     <div class="container">
         <div class="row al-content-block-row">
             <div class="col-lg-6">
@@ -41,42 +53,13 @@
             <div class="col-lg-6">
                 <div class="al-txt-block">
                     <h2 class="mb-3">Qui sommes-nous ?</h2>
-                    <p class="text-justify">
-                        Fondée en 2017 par les Français Olivier et Alexis, INHOUSE est une scale-up américaine basée à New York, Boston, Paris et Dublin. L’entreprise propose une plateforme SaaS de monitoring des infrastructures cloud et applications pour les entreprises. L’idée est de faciliter la collaboration entre le développement et les équipes opérationnelles, accélérer les cycles de développement et réduire les coûts liés aux opérations et à l’innovation.
-Nous avons une forte empathie et une identification avec les end-users pendant que nous utilisons notre propre produit tous les jours.</p>
+                    <p class="text-justify"><%=@user.description%></p>
                 </div>
             </div>
         </div>
         </div>
     </div>
 </section>
-
-
-
-
-
-
-
-
-<div class="">
-  <ul>
-    <h4>Année de Création</h4>
-    <span>2017</span>
-    <h4>Nombre de collaborateurs</h4>
-    <span>32</span>
-    <h4>Age moyen</h4>
-    <span>27 ans</span>
-  </ul>
-</div>
-</div>
-
-
-<div>
-<%if @user == current_user %>
-<h4>Vous souhaitez louer une partie de votre espace de travail sur notre plateforme?</h4>
-<%= link_to 'Become a landlord', new_offer_path, class:"btn btn-outline-primary" %>
-<%end%>
-</div>
 
 </body>
 </html>
