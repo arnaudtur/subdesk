@@ -71,7 +71,12 @@ Nous avons une forte empathie et une identification avec les end-users pendant q
 </div>
 
 
-
+<div>
+<%if @user == current_user %>
+<h4>Vous souhaitez louer une partie de votre espace de travail sur notre plateforme?</h4>
+<%= link_to 'Become a landlord', new_offer_path, class:"btn btn-outline-primary" %>
+<%end%>
+</div>
 
 </body>
 </html>

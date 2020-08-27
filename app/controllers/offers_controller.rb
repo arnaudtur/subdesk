@@ -61,6 +61,13 @@ class OffersController < ApplicationController
     end
   end
 
+  def destroy
+    @offer = Offer.find(params[:id])
+    @offer.destroy
+    authorize @offer
+    redirect_to offers_path
+  end
+
 
   private
 

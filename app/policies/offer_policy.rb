@@ -5,12 +5,17 @@ class OfferPolicy < ApplicationPolicy
     end
   end
 
+
+  def destroy?
+    record.user == user
+  end
+
   def edit?
-    true
+    record.user == user
   end
 
   def update?
-    true
+    record.user == user
   end
 
     def index?
@@ -22,7 +27,7 @@ class OfferPolicy < ApplicationPolicy
     end
 
     def create?
-      true
+      record.user == user
     end
 
     def new?
