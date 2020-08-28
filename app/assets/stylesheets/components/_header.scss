@@ -10,3 +10,19 @@
     font-size: 30px;
     border-bottom: 7px solid #204051;
 }
+
+.header-bookings{
+  background-position-y: 32% ;
+  padding: 120px;
+  margin-bottom: 20px;
+  text-align: center;
+  background-image: linear-gradient(
+   rgba(0, 0, 0, 0.6),
+   rgba(0, 0, 0, 0.6)
+ ),url(https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1113&q=80);
+  color: #fff;
+  background-size: cover;
+  font-size: 30px;
+  border-bottom: 7px solid #204051;
+
+}
