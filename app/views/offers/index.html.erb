@@ -54,6 +54,8 @@
   <div class="container align-items-center justify-content-center d-flex flex-column">
 
       <%@offers.each do |offer|%>
+      <% if offer.user ==  current_user %>
+      <% else %>
       <%= link_to offer_path(offer.id) do%>
       <div class="card promoting-card mt-3" style="width: 481px; border-radius: 10px;">
 
@@ -66,7 +68,7 @@
             <!-- Subtitle -->
           </div>
           <div>
-            <p class="text-center badge badge-primary"> <%= offer.matching_r(@user_logged) %>%<br> de matching</p>
+            <p class="text-center badge badge-pil <%= matching_color(offer.matching_r(@user_logged)) %>"> Matching: <%= offer.matching_r(@user_logged) %>%</p>
           </div>
 
         </div>
@@ -93,6 +95,7 @@
         </div>
 
       </div>
+    <%end%>
     <%end%>
     <%end%>
   </div>

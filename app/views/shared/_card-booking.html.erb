@@ -9,7 +9,7 @@
         </div>
         <h2><%= booking.offer.name %></h2>
         <p>Entreprise : <strong><%= booking.offer.user.name %></strong></p>
-        <span class="badge badge-pill badge-success"> Matching <%= booking.offer.matching_r(@user_logged) %>%</span>
+        <span class="badge badge-pill badge-success"> Matching <%= booking.offer.matching_r(current_user) %>%</span>
       </div>
     </div>
   <br>
@@ -23,7 +23,7 @@
       </div>
       <h2><%= booking.offer.name %></h2>
       <p>Entreprise: <strong><%= booking.user.name %></strong></p>
-              <span class="badge badge-pill badge-warning"> Matching <%= booking.offer.matching_r(@user_logged) %>%</span>
+              <span class="badge badge-pill badge-warning"> Matching <%= booking.offer.matching_r(current_user) %>%</span>
     </div>
   </div>
   <br>
