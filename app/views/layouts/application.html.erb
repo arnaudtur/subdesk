@@ -12,7 +12,8 @@
   </head>
 
   <body>
-    <% if controller_path == 'devise/registrations' || 'bookings' || 'devise/sessions' %>
+    <%#= controller_name == 'registrations' %>
+    <% if controller_name == 'registrations' %>
     <%= render 'shared/navbar' %>
     <% else %>
     <%= render 'shared/navbar_secondary' %>
