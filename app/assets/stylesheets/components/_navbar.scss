@@ -1,47 +1,14 @@
-.navbar-lewagon {
+.navbar-subdesk {
   justify-content: space-between;
-  position: absolute;
   width: 100%;
-  background-color: transparent;
+  background-color: grey;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-subdesk .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-subdesk .navbar-brand img {
   width: 40px;
 }
 
-.show > .btn-outline-light.dropdown-toggle {
-  background-color: transparent;
-}
-
-.btn-outline-light:hover {
-background-color: transparent;
-color: white;
-border-color: transparent;
-}
-
-
-.btn-outline-light {
-border-color: transparent;
-}
-
-.show > .btn-outline-light.dropdown-toggle:focus {
-  box-shadow: none;
-  border-color: transparent;
-  color: white;
-}
-
-.navbar-expand-sm .navbar-nav .dropdown-menu {
-    position: absolute;
-    background-color: transparent;
-    border-color: white;
-    border-radius: 15px;
-    margin-top: 10%;
-}
-
-.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
-    color: white;
-}
