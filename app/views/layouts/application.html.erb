@@ -12,8 +12,12 @@
   </head>
 
   <body>
+    <% if controller_path == 'devise/registrations' || 'bookings' || 'devise/sessions' %>
     <%= render 'shared/navbar' %>
+    <% else %>
     <%= render 'shared/navbar_secondary' %>
+    <% end %>
+    <%#= devise/registrations bookings devise/sessions %>
     <%= render 'shared/flashes' %>
 
     <%= yield %>

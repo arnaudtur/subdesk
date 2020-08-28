@@ -4,6 +4,11 @@
     <h1>SubDesk</h1>
     <p>Trouvez votre parfait collocataire de travail</p>
       <span id="banner-typed-text"></span>
+      <% if !user_signed_in? %>
+      <%= link_to "Je trouve mes bureaux",  user_session_path, class: "btn btn-outline-primary butnav" %>
+      <% else user_signed_in? %>
+      <%= link_to "Je trouve mes bureaux",  offers_path, class: "btn btn-outline-primary butnav" %>
+      <% end %>
     </p>
 </div>
 
