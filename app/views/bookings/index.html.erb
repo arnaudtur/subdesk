@@ -54,37 +54,46 @@
         </div>
         <h2><%= booking.offer.name %></h2>
         <p>Entreprise : <strong><%= booking.offer.user.name %></strong></p>
-        <span class="badge badge-pill badge-success"> Matching <%= booking.offer.matching_r(@user_logged) %>%</span>
+        <span class="badge badge-pill <%= matching_color(booking.offer.matching_r(@user_logged)) %>"> Matching <%= booking.offer.matching_r(@user_logged) %>%</span>
       </div>
     </div>
-  <br>
-      <button type="button" class="btn btn-primary btn-sm">Accepter</button>
-    <button type="button" class="btn btn-secondary btn-sm">Refuser</button>
-<% elsif current_user == booking.offer.user %>
-  <div class="card-product justify-content-left">
-    <%= cl_image_tag booking.user.photo.key, class:"border border-primary"  %>
-    <div class="card-product-infos">
-      <div class="d-flex justify-content-between">
-        <span class="badge badge-pill badge-light">Landlord</span>
-        <span class="badge badge-pill badge-dark justify-content-right"><%= booking.status %></span>
+    <br>
+    <% if booking.status == "Discussion"   %>
+      <button type="button" class="btn btn-info btn-sm">Discuter</button>
+    <% end%>
+      <%= link_to "Annuler", accepter_path(booking), method: :post, class: "btn btn-secondary btn-sm" %>
+      <br><br>
+    <% elsif current_user == booking.offer.user %>
+    <div class="card-product justify-content-left">
+      <%= cl_image_tag booking.user.photo.key, class:"border border-primary"  %>
+      <div class="card-product-infos">
+        <div class="d-flex justify-content-between">
+          <span class="badge badge-pill badge-light">Landlord</span>
+          <span class="badge badge-pill badge-dark justify-content-right"><%= booking.status %></span>
+        </div>
+        <h2><%= booking.offer.name %></h2>
+        <p>Entreprise: <strong><%= booking.user.name %></strong></p>
+        <span class="badge badge-pill <%= matching_color(booking.offer.matching_r(booking.user)) %>"> Matching <%= booking.offer.matching_r(booking.user) %>%</span>
       </div>
-      <h2><%= booking.offer.name %></h2>
-      <p>Entreprise: <strong><%= booking.user.name %></strong></p>
-              <span class="badge badge-pill badge-warning"> Matching <%= booking.offer.matching_r(@user_logged) %>%</span>
     </div>
-  </div>
-  <br>
+    <br>
 
+    <% if booking.status == "Discussion"   %>
+      <button type="button" class="btn btn-info btn-sm">Discuter</button>
+    <% end%>
+      <%= link_to "Accepter", accepter_path(booking), method: :post, class: "btn btn-primary btn-sm" %>
+      <%= link_to "Refuser", accepter_path(booking), method: :post, class: "btn btn-secondary btn-sm" %>
+      <br><br>
 
-    <button type="button" class="btn btn-primary btn-sm">Accepter</button>
-    <button type="button" class="btn btn-secondary btn-sm">Refuser</button>
-  <% else %>
   <% end %>
-
-  <% end %>
+<% end%>
 
 </div>
 
+      <%# simple_form_for [booking.offer, booking] do |f| %>
+        <%#= f.input :status, value: "Discussion", as: :hidden %>
+        <%#= f.button :submit, class:"btn btn-outline-primary" %>
+      <%# end%>
 
 
 <div class="panel-group">
