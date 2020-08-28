@@ -7,9 +7,11 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :update]
 
     resources :offers, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
-      resources :bookings, only: [:new, :create]
+      resources :bookings, only: [:new, :create, :edit, :update]
     end
     resources :bookings, only: [:index]
+
+    post "bookings/:id/accepter_booking", to: "bookings#accepter_booking", as: "accepter"
 
 
 end

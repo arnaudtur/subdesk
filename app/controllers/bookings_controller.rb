@@ -5,8 +5,6 @@ class BookingsController < ApplicationController
   end
 
 
-
-
   def new
     @offer = Offer.find(params[:offer_id])
     @booking = Booking.new
@@ -26,6 +24,27 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit
+    @booking = Booking.find(params[:id])
+    authorize @booking
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.update(params_bookings)
+    authorize @booking
+
+    # no need for app/views/restaurants/update.html.erb
+    redirect_to bookings_path
+  end
+
+  def accepter_booking
+    @booking = Booking.find(params[:id])
+    @booking.status == "Discussion" ? @booking.status = "Accepter" : @booking.status = "Discussion"
+    @booking.save
+    redirect_to bookings_path
+    authorize @booking
+  end
 
   private
 
