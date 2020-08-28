@@ -40,7 +40,7 @@ class BookingsController < ApplicationController
 
   def accepter_booking
     @booking = Booking.find(params[:id])
-    @booking.status == "Discussion" ? @booking.status = "Accepter" : @booking.status = "Discussion"
+    @booking.status == "Discussion" ? @booking.status = "Accepté" : @booking.status = "Discussion"
     @booking.save
     redirect_to bookings_path
     authorize @booking
