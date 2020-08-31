@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <div style="padding-bottom: 10vh; min-height: 90vh;">
     <%#= controller_name == 'registrations' %>
     <% if controller_name == 'registrations' %>
     <%= render 'shared/navbar' %>
@@ -24,5 +25,7 @@
     <%= render 'shared/flashes' %>
 
     <%= yield %>
+
+    </div>
   </body>
 </html>

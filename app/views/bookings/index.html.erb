@@ -3,17 +3,24 @@
     <h1 class="p-5" style="text-align: center ">Vos reservations</h1>
 
     </div>
-  </div>
-</div>
-<div class="container">
-  <div class="btn-group d-flex justify-content-center " role="group" aria-label="Basic example">
-    <%= link_to "Candidatures (#{Booking.where(status:["Discussion","Pending"]).count})" , bookings_path(status:["Pending","Discussion"]), class:"btn btn-outline-primary"  %>
-    <%= link_to "Validées", bookings_path(status:"Acceptée"), class:"btn btn-outline-primary"  %>
-    <%= link_to "Archivées", bookings_path(status:["Refusée","Annulée"]), class:"btn btn-outline-primary"  %>
-  </div>
-  <br>
-  <br>
 
+</div><br><br>
+<div class="container">
+<ul class="list-inline tabs-underlined justify-content-center" >
+  <li>
+    <%= link_to "Candidatures (#{Booking.where(status:["Discussion","Pending"]).count})" , bookings_path(status:["Pending","Discussion"]), class: "tab-underlined #{'activex' if params[:status] == ["Pending","Discussion"]}" %>
+  </li>
+  <li>
+    <%= link_to "Validées", bookings_path(status:"Acceptée"), class: "tab-underlined #{'activex' if params[:status] == 'Acceptée'}"  %>
+  </li>
+  <li>
+    <%= link_to "Archivées", bookings_path(status:["Refusée","Annulée"]), class: "tab-underlined #{'activex' if params[:status] == ["Refusée", "Annulée"]}"  %>
+  </li>
+
+</ul>
+  <br>
+  <br>
+<br>
 
 <% @bookings.each do |booking| %>
   <% if current_user == booking.user %>
@@ -21,8 +28,8 @@
         <%= cl_image_tag booking.offer.user.photo.key, class:"border border-primary"  %>
         <div class="card-product-infos">
           <div class="d-flex justify-content-between">
-            <span class="badge badge-pill badge-dark">Locataire</span>
-            <span class="badge badge-pill badge-dark justify-content-right"><%= booking.status %></span>
+            <span class="badge badge-pill badge-dark p-2">Locataire</span>
+            <span class="badge badge-pill badge-dark justify-content-right p-2"><%= booking.status %></span>
           </div>
           <h2><%= booking.offer.name %></h2>
           <p>Entreprise : <strong><%= booking.offer.user.name %></strong></p>
@@ -56,8 +63,8 @@
       <%= cl_image_tag booking.user.photo.key, class:"border border-primary"  %>
       <div class="card-product-infos">
         <div class="d-flex justify-content-between">
-          <span class="badge badge-pill badge-light">Landlord</span>
-          <span class="badge badge-pill badge-dark justify-content-right"><%= booking.status %></span>
+          <span class="badge badge-pill badge-light p-2">Landlord</span>
+          <span class="badge badge-pill badge-dark justify-content-right p-2"><%= booking.status %></span>
         </div>
         <h2><%= booking.offer.name %></h2>
         <p>Entreprise: <strong><%= booking.user.name %></strong></p>
@@ -110,8 +117,24 @@ for (i = 0; i < coll.length; i++) {
       content.style.maxHeight = content.scrollHeight + "px";
     }
   });
-}
+};
+
+
+// const tabs = document.querySelectorAll('.tab-underlined');
+
+// const toggleActive = (event) => {
+//   event.currentTarget.classList.toggle('activex')
+// }
+
+// const bindTab = (tab) => {
+//   tab.addEventListener('click', toggleActive)
+// }
+
+// tabs.forEach(bindTab)
+
 </script>
+
+
 
 
 
