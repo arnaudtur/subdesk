@@ -11,7 +11,13 @@ Rails.application.routes.draw do
     end
     resources :bookings, only: [:index]
 
+    resources :chatrooms, only: [:show, :new] do
+      resources :messages, only: :create
+    end
+
     post "bookings/:id/accepter_booking", to: "bookings#accepter_booking", as: "accepter"
+
+
 
 
 end
