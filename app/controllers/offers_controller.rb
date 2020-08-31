@@ -25,7 +25,7 @@ class OffersController < ApplicationController
       offer.rate = offer.matching_r(@user_logged).to_i
     end
 
-    @markers = @offers.geocoded.map do |offer|
+    @markers = @offers.geocoded.where.not(user: current_user).map do |offer|
       {
         lat: offer.latitude,
         lng: offer.longitude,
@@ -53,6 +53,8 @@ class OffersController < ApplicationController
   def show
     @offer = Offer.find(params[:id])
     authorize @offer
+    @user_logged = current_user
+
 
     @markers = [{
       lat: @offer.latitude,

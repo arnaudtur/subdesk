@@ -1,6 +1,6 @@
 
       <%= link_to offer_path(offer.id) do%>
-      <div class="card promoting-card mb-5 ml-5 d-flex" style="width: 350px; border-radius: 10px; box-shadow: 0 14px 28px rgba(0,0,0,0.25)">
+      <div class="card promoting-card d-flex" style="width: 350px; border-radius: 10px; box-shadow: 0 14px 28px rgba(0,0,0,0.25)">
         <!-- Card image -->
         <div class="view overlay">
         <% offer.photos.each do |photo| %>
@@ -16,7 +16,7 @@
             <h4 class="font-weight-bold mb-2"><%= offer.user.name%></h4>
             <p><i class="fas fa-male"></i> <%=offer.seats%></p>
           </div>
-            <p><%=offer.description%></p>
+            <p><%=offer.address%></p>
              <!-- Button -->
             <div class="float-right">
                 <span class="price">
