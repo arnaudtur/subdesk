@@ -1,6 +1,8 @@
+<div style="padding-top:90px;">
+
 <div class="card col-6 mx-auto", style="padding: 10px; margin-top: 50px; border-radius:8%;">
   <div style="text-align:center;">
-<h2>Log in</h2>
+<h2>Connexion</h2>
   </div>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -17,10 +19,11 @@
 
   <div style="text-align:center;">
     <div class="form-actions">
-      <%= f.button :submit, "Log in", class:"btn btn-outline-primary" %>
+      <%= f.button :submit, "Se connecter", class:"btn btn-outline-primary" %>
     </div>
     <% end %>
     <%= render "devise/shared/links" %>
     </div>
-</div>  
+</div>
 
+</div>
