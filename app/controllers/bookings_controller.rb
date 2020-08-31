@@ -2,6 +2,8 @@ class BookingsController < ApplicationController
   def index
     @bookings = policy_scope(Booking)
     @user_logged = current_user
+    params[:status] = params[:status] || ["Pending", "Discussion"]
+    @bookings = @bookings.where(status:params[:status])
   end
 
 
