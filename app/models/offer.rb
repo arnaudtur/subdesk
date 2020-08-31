@@ -39,3 +39,5 @@ class Offer < ApplicationRecord
     matching_rate = (matching * 100) / 4
   end
 end
+
+
