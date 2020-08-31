@@ -13,7 +13,11 @@
 
   <body>
     <%#= controller_name == 'registrations' %>
-    <% if controller_name == 'registrations' %>
+    <% if controller_name == 'registrations'%>
+    <%= render 'shared/navbar' %>
+    <% elsif controller_name == 'sessions'%>
+    <%= render 'shared/navbar' %>
+    <% elsif controller_name == 'edit'%>
     <%= render 'shared/navbar' %>
     <% elsif controller_name == 'pages'%>
     <%= render 'shared/navbar_home' %>
