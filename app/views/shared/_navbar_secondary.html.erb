@@ -16,11 +16,11 @@
               </div>
             </li>
           <% elsif user_signed_in? %>
-            <%= link_to "Mes Réservations",  bookings_path, class: "btn btn-outline-primary", style:"color:#ea5455; font-weight:bolder;" %>
+            <%= link_to "Mes Réservations",  bookings_path, class: "nav-link", style:"color:#ea5455; font-weight:bolder;" %>
             <span style="width:10px;"></span>
-            <%= link_to "Je trouve mes bureaux",  offers_path, class: "btn btn-outline-primary", style:"color:#ea5455; font-weight:bolder;" %>
+            <%= link_to "Je trouve mes bureaux",  offers_path, class: "nav-link", style:"color:#ea5455; font-weight:bolder;" %>
             <span style="width:10px;"></span>
-             <%= link_to 'Nouvelle Annonce',  new_offer_path, class: "btn btn-outline-primary", style:"color:#ea5455; font-weight:bolder;" %>
+             <%= link_to 'Nouvelle Annonce',  new_offer_path, class: "nav-link", style:"color:#ea5455; font-weight:bolder;" %>
             <span style="width:30px;"></span>
             <li class="nav-item dropdown imgnav">
               <div class="d-flex flex-row-reverse">
