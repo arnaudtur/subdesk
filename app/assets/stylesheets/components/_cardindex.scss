@@ -18,3 +18,21 @@
     text-decoration: none;
   }
 }
+p.text-center.badge.badge-pil.badge-danger {
+  position: absolute;
+  right: 16px;
+  background-color: white;
+  color: red;
+}
+p.text-center.badge.badge-pil.badge-warning {
+  position: absolute;
+  right: 16px;
+  background-color: white;
+  color: orange;
+}
+p.text-center.badge.badge-pil.badge-success {
+  position: absolute;
+  right: 16px;
+  background-color: white;
+  color: green;
+}

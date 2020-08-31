@@ -4,7 +4,7 @@
       <%= cl_image_tag booking.offer.user.photo.key, class:"border border-primary"  %>
       <div class="card-product-infos">
         <div class="d-flex justify-content-between">
-          <span class="badge badge-pill badge-dark">Tenant</span>
+          <span class="badge badge-pill badge-dark">Locataire</span>
           <span class="badge badge-pill badge-dark justify-content-right"><%= booking.status %></span>
         </div>
         <h2><%= booking.offer.name %></h2>
@@ -18,7 +18,7 @@
     <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
     <div class="card-product-infos">
       <div class="d-flex justify-content-between">
-        <span class="badge badge-pill badge-light">Landlord</span>
+        <span class="badge badge-pill badge-light">Propriétaire</span>
         <span class="badge badge-pill badge-dark justify-content-right"><%= booking.status %></span>
       </div>
       <h2><%= booking.offer.name %></h2>
