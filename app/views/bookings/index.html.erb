@@ -7,7 +7,7 @@
 </div>
 <div class="container">
   <div class="btn-group d-flex justify-content-center " role="group" aria-label="Basic example">
-    <%= link_to "Candidatures", bookings_path(status:["Pending","Discussion"]), class:"btn btn-outline-primary"  %>
+    <%= link_to "Candidatures (#{Booking.where(status:["Discussion","Pending"]).count})" , bookings_path(status:["Pending","Discussion"]), class:"btn btn-outline-primary"  %>
     <%= link_to "Validées", bookings_path(status:"Acceptée"), class:"btn btn-outline-primary"  %>
     <%= link_to "Archivées", bookings_path(status:["Refusée","Annulée"]), class:"btn btn-outline-primary"  %>
   </div>
