@@ -24,6 +24,10 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
+  def accepter_discuss_booking?
+    true
+  end
+
   def accepter_booking?
     true
   end

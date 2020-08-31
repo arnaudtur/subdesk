@@ -71,7 +71,7 @@
 
 
     <% if booking.status == "Discussion"   %>
-      <button type="button" class="btn btn-info btn-sm">Discuter</button>
+      <%= link_to "Discussion", chatroom_path(booking.chatroom.id), method: :get, class: "btn btn-info btn-sm" %>
     <% end%>
       <%= link_to "Annuler", cancel_path(booking), method: :post, class: "btn btn-secondary btn-sm" %>
       <br><br>
@@ -101,9 +101,12 @@
     <br>
 
     <% if booking.status == "Discussion"   %>
-      <button type="button" class="btn btn-info btn-sm">Discuter</button>
-    <% end%>
+
+      <%= link_to "Discussion", chatroom_path(booking.chatroom.id), method: :get, class: "btn btn-info btn-sm" %>
       <%= link_to "Accepter", accepter_path(booking), method: :post, class: "btn btn-primary btn-sm" %>
+    <% else%>
+      <%= link_to "Accepter de Discuter", accepter_discuss_path(booking), method: :post, class: "btn btn-primary btn-sm" %>
+      <% end%>
       <%= link_to "Refuser", refused_path(booking), method: :post, class: "btn btn-secondary btn-sm" %>
       <br><br>
 
