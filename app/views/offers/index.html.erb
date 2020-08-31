@@ -8,7 +8,7 @@
           params[:address],
           class: "form-control",
           placeholder: "ville",
-          style:"border-top-left-radius: 30px; border-bottom-left-radius: 30px;"
+          style:"border-top-left-radius: 10px; border-bottom-left-radius: 10px;"
         %>
         </div>
         <div>
@@ -35,7 +35,7 @@
           placeholder: "pièces"
         %>
         </div>
-      <%= submit_tag "Rechercher", class: "btn btn-primary pl-5 pr-5", style:"border-top-right-radius: 30px; border-bottom-right-radius: 30px;" %>
+      <%= submit_tag "Rechercher", class: "btn btn-primary pl-5 pr-5", style:"border-top-right-radius: 10px; border-bottom-right-radius: 10px;" %>
       <% end %>
     </div>
   </div>
@@ -44,7 +44,10 @@
   <h4 class="text-align pt-3 pl-5">
           <% cards_count = 0 %>
           <% @offers.each do |offer| %>
+            <% if offer.user ==  current_user %>
+            <% else %>
             <%cards_count += 1 %>
+            <%end%>
             <%end%>
            <%=  cards_count%> annonces pour votre recherche
 
@@ -66,6 +69,7 @@
           <%= cl_image_tag photo.key, height: 230, width: 350, crop: "fill", class:"imagecard"%>
         <p class="text-center badge badge-pil <%= matching_color(offer.matching_r(@user_logged)) %>"> Matching: <%= offer.matching_r(@user_logged) %>%</p>
 
+
         <%end%>
         </div>
 
@@ -74,14 +78,23 @@
 
           <div class="collapse-content">
 
-            <h4 class="card-title font-weight-bold mb-2"><%= offer.name%></h4>
-            <h4 class="card-title font-weight-bold mb-2"><%= offer.user.name%></h4>
-
-
             <!-- Text -->
-            <p><%=offer.user.name%> vous propose <%=offer.seats%> sièges dans <%= offer.room%> pièces au sein de leurs bureaux.</p>
+          <div class="d-flex justify-content-between">
+            <h4 class="font-weight-bold mb-2"><%= offer.user.name%></h4>
+            <p><i class="fas fa-male"></i> <%=offer.seats%></p>
+
+          </div>
+            <p><%=offer.description%></p>
+
              <!-- Button -->
-            <p class="float-right p-1 my-1" style="font-weight: 850; color: #fd595e; font-size: 17px;"><%= offer.price%> €/ par poste</p>
+            <div class="float-right">
+                <span class="price">
+                    <span class="currency"><%= offer.price%>€</span>
+                    <span class="month">/MOIS</span>
+                </span>
+
+            </div>
+
 
           </div>
 

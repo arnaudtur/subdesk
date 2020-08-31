@@ -43,6 +43,7 @@
 </div>
 
 <div class="col-4">
+
 <% if @current_user.id == @chatroom.booking.offer.user.id%>
   <h1><%= @chatroom.booking.user.name%></h1>
   <%= cl_image_tag @chatroom.booking.user.photo.key, class:"img-thumbnail"%>
@@ -52,6 +53,7 @@
   <%= cl_image_tag @chatroom.booking.offer.photos.first.key, class:"img-thumbnail"%>
   <p>Status of the booking: <strong><%= @chatroom.booking.status %></strong></p>
 <%end%>
+
 </div>
 
 </div>   
