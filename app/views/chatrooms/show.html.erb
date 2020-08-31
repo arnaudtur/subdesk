@@ -10,32 +10,51 @@
 <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
   <% @chatroom.messages.each do |message| %>
     <div class="message-container" id="message-<%= message.id %>">
-      <i class="author">
-        <span><%= message.user.name %></span>
-        <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-      </i>
+  <%if current_user.id != message.user.id%>
+    <div style="text-decoration: underline;">
+    <small>
+    <span><%= "#{message.user.name}, le" %></span>
+    <%= message.created_at.strftime("%d/%m/%y à %H:%M :") %>
+    </small>
+    </div>
+  <%else%>
+    <div style="text-decoration: underline;">
+    <small>
+    <span><%= "#{message.user.name} (vous), le" %></span>
+    <%= message.created_at.strftime("%d/%m/%y à %H:%M :") %>
+    </small>
+    </div>
+  <%end%>
       <p><%= message.content %></p>
     </div>
   <% end %>
 </div>
 <br><br><br><br>
-<div class="fixed-bottom">
-<div class="card-product" style="height:75px;">
-<div class="card-product-infos">
-<%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-  <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
-<% end %>
-</div>
-</div>
-</div>
+<div class="fixed-bottom mx-5">
+  <div class="card-product" style="height:60px; width:90vw;">
+    <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+    <div class="d-flex justify-content-space-between">
+        <div class="pl-4 pt-2", style="width:70vw;"><%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %></div>
+        <div class="ml-4 pt-2", style="width:15vw;"><%= f.button :submit, class:"btn btn-outline-primary"%></div>
+      </div>
+  <% end %>
+  </div>
+  </div>
 </div>
 
 <div class="col-4">
-<h1>Information sur la boite</h1>
-</div>
-</div>
-   
+<% if @current_user.id == @chatroom.booking.offer.user.id%>
+  <h1><%= @chatroom.booking.user.name%></h1>
+  <%= cl_image_tag @chatroom.booking.user.photo.key, class:"img-thumbnail"%>
+  <p>Status of the booking: <strong><%= @chatroom.booking.status %></strong></p>
+<% else %>
+  <h1><%= @chatroom.booking.offer.user.name%></h1>
+  <%= cl_image_tag @chatroom.booking.offer.photos.first.key, class:"img-thumbnail"%>
+  <p>Status of the booking: <strong><%= @chatroom.booking.status %></strong></p>
+<%end%>
 </div>
 
+</div>   
+</div>
 </div>
 </div>
