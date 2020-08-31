@@ -1,0 +1,30 @@
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 150px;
+}
+
+.show > .btn-outline-light.dropdown-toggle {
+  background-color: transparent;
+}
+
+.show > .btn-outline-light.dropdown-toggle:focus {
+  box-shadow: none;
+  border-color: transparent;
+  color: white;
+}
+
+.navbar-expand-sm .navbar-nav .dropdown-menu {
+    position: absolute;
+    background-color: transparent;
+    border-color: white;
+    border-radius: 15px;
+    margin-top: 10%;
+}
+
+.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
+    color: white;
+}
+

@@ -17,17 +17,6 @@
   background-color: transparent;
 }
 
-.btn-outline-light:hover {
-background-color: transparent;
-color: white;
-border-color: transparent;
-}
-
-
-.btn-outline-light {
-border-color: transparent;
-}
-
 .show > .btn-outline-light.dropdown-toggle:focus {
   box-shadow: none;
   border-color: transparent;
@@ -45,5 +34,4 @@ border-color: transparent;
 .navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
     color: white;
 }
-
 

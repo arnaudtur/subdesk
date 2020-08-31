@@ -1,14 +1,14 @@
 
 <div class="header">
   <div class="header1">
-    <div class="d-flex flex-column justify-content-center align-items-center p-5" style="margin: 35px";>
+    <div class="row flex-column justify-content-center align-items-center p-5" style="margin: 35px";>
       <p class="c10">Trouvez votre parfait collocataire de travail.</p>
       <p class="c10 mb-5">Bienvenue chez <strong class="c11">SUBDESK</strong></p>
         <span id="banner-typed-text"></span>
         <% if !user_signed_in? %>
-        <%= link_to "Je trouve mes bureaux",  user_session_path, class: "btn btn-success" %>
+        <%= link_to "Je trouve mes bureaux",  user_session_path, class: "btn btn-outline-success" %>
         <% else user_signed_in? %>
-        <%= link_to "Je trouve mes bureaux",  offers_path, class: "btn btn-success" %>
+        <%= link_to "Je trouve mes bureaux",  offers_path, class: "btn btn-outline-success" %>
         <% end %>
       </p>
     </div>

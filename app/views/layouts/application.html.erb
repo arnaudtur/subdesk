@@ -15,15 +15,13 @@
     <div style="padding-bottom: 10vh; min-height: 90vh;">
     <%#= controller_name == 'registrations' %>
     <% if controller_name == 'registrations'%>
-    <%= render 'shared/navbar' %>
+    <%= render 'shared/navbar1' %>
     <% elsif controller_name == 'sessions'%>
-    <%= render 'shared/navbar' %>
-    <% elsif controller_name == 'edit'%>
-    <%= render 'shared/navbar' %>
+    <%= render 'shared/navbar1' %>
     <% elsif controller_name == 'pages'%>
     <%= render 'shared/navbar_home' %>
     <% else %>
-    <%= render 'shared/navbar_secondary' %>
+    <%= render 'shared/navbar2' %>
     <% end %>
     <%#= devise/registrations bookings devise/sessions %>
     <%= render 'shared/flashes' %>

@@ -27,63 +27,6 @@
     </div>
     </div>
 
-  <h3 class="mx-2 mt-2 border-bottom"><strong>Informations Entreprise</strong></h3>
-
-    <div class="second row m-4">
-    <div class="col-md-6 p-4">
-    <%= f.input :name, label: "Nom de l'entreprise",
-                required: true,
-                input_html: { autocomplete: "name" } %>
-    <%= f.input :hq_address, label: "Adresse de l'entreprise",
-                required: true,
-                input_html: { autocomplete: "hq_address" } %>
-    <%= f.input :number_of_employees, label: "Nombre de collaborateurs",
-                required: true,
-                input_html: { autocomplete: "number_of_employees" } %>
-
-    <%= f.input :weblink, label: "Lien du site internet de l'entreprise",
-                required: true,
-                input_html: { autocomplete: "weblink" } %>
-    <%= f.input :photo, as: :file %>
-    </div>
-    <div class="col-md-6 p-4">
-    <%= f.input :field, label: "Secteur",
-                required: true,
-                input_html: { autocomplete: "field" } %>
-    <%= f.input :year_of_creation, label: "Année de création",
-                required: true,
-                input_html: { autocomplete: "year_of_creation" } %>
-
-    <%= f.input :average_age, label: "L'âge moyen des collaborateurs",
-                required: true,
-                input_html: { autocomplete: "average_age" } %>
-
-
-    <%= f.input :description, label: "Description",
-                required: true,
-                input_html: { autocomplete: "description" } %>
-    </div>
-    </div>
-
-<h3 class="mx-2 mt-2 border-bottom"><strong>Formulaire Critères</strong></h3>
-
-    <div class="row m-4 justify-content-center mb-5 border-bottom">
-    <div class="third col-md-4 p-4 mb-5">
-    <%= f.input :criteria1, label: "Critère n°1",
-                required: true,
-                input_html: { autocomplete: "criteria1" } %>
-    <%= f.input :criteria2, label: "Critère n°2",
-                required: true,
-                input_html: { autocomplete: "criteria2" } %>
-    <%= f.input :criteria3, label: "Critère n°3",
-                required: true,
-                input_html: { autocomplete: "criteria3" } %>
-    <%= f.input :criteria4, label: "Critère n°4",
-                required: true,
-                input_html: { autocomplete: "criteria4" } %>
-    </div>
-    </div>
-
   </div>
 
   <div class="row form-actions justify-content-center mt-5">
