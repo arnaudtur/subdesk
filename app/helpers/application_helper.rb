@@ -1,11 +1,11 @@
 module ApplicationHelper
   def matching_color(rate)
     if rate >= 75
-      "badge-success"
+      "badge-success p-2"
     elsif rate > 25
-      "badge-warning"
+      "badge-warning p-2"
     else
-      "badge-danger"
+      "badge-danger p-2"
     end
   end
 end
