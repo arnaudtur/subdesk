@@ -11,7 +11,16 @@ Rails.application.routes.draw do
     end
     resources :bookings, only: [:index]
 
+    resources :chatrooms, only: [:show, :new] do
+      resources :messages, only: :create
+    end
+
     post "bookings/:id/accepter_booking", to: "bookings#accepter_booking", as: "accepter"
+    post "bookings/:id/accepter_discuss_booking", to: "bookings#accepter_discuss_booking", as: "accepter_discuss"
+    post "bookings/:id/cancel_booking", to: "bookings#cancel_booking", as: "cancel"
+    post "bookings/:id/refused_booking", to: "bookings#refused_booking", as: "refused"
+
+
 
 
 end
