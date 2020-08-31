@@ -53,8 +53,10 @@ ActiveRecord::Schema.define(version: 2020_08_31_073008) do
 
   create_table "chatrooms", force: :cascade do |t|
     t.string "name"
+    t.bigint "booking_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["booking_id"], name: "index_chatrooms_on_booking_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -117,6 +119,7 @@ ActiveRecord::Schema.define(version: 2020_08_31_073008) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "offers"
   add_foreign_key "bookings", "users"
+  add_foreign_key "chatrooms", "bookings"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "offers", "users"
