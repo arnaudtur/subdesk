@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+    <%= image_tag("/assets/logo2.png") %>
   <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -22,11 +22,10 @@
             <span style="width:30px;"></span>
             <li class="nav-item dropdown imgnav">
               <div class="d-flex flex-row-reverse">
-                <button class="btn btn-outline-light dropdown-toggle" type="button" data-toggle="dropdown"></button>
-                <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle m-2", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="color:#ea5455;">
                   <%= link_to 'Profil', user_path(current_user), class:"nav-link", style:"color:#ea5455;"%>
-                  <%= link_to 'Edit',  edit_user_registration_path, class:"nav-link", style:"color:#ea5455;" %>
+                  <%= link_to 'Edit Profil',  edit_user_path(current_user), class:"nav-link", style:"color:#ea5455;" %>
                   <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class:"nav-link",style:"color:#ea5455;" %>
               </div>
             </li>

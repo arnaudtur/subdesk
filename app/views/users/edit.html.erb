@@ -1,35 +1,9 @@
 <div style="padding-top:90px;">
-
-<h3 class="mx-2 border-bottom"><strong>Modifier <%= resource_name.to_s.humanize %></strong> </h3>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<h3 class="mx-2 mt-2 border-bottom"><strong>Informations Entreprise</strong></h3>
+<%= simple_form_for @user, url: user_path(@user), method: :put do |f| %>
   <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <div class="img1 row m-4 justify-content-center">
-    <div class="first col-md-4 p-4 mt-3 mb-3">
-    <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-    <%= f.input :password,label: "Mot de passe",
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation, label: "Confirmation du mot de passe",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,label: "Mot de passe actuel",
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-    </div>
-    </div>
-
-  <h3 class="mx-2 mt-2 border-bottom"><strong>Informations Entreprise</strong></h3>
-
-    <div class="second row m-4">
+<div class="form-inputs">
+  <div class="second row m-4">
     <div class="col-md-6 p-4">
     <%= f.input :name, label: "Nom de l'entreprise",
                 required: true,
@@ -46,6 +20,7 @@
                 input_html: { autocomplete: "weblink" } %>
     <%= f.input :photo, as: :file %>
     </div>
+
     <div class="col-md-6 p-4">
     <%= f.input :field, label: "Secteur",
                 required: true,
@@ -63,7 +38,7 @@
                 required: true,
                 input_html: { autocomplete: "description" } %>
     </div>
-    </div>
+  </div>
 
 <h3 class="mx-2 mt-2 border-bottom"><strong>Formulaire Critères</strong></h3>
 
@@ -89,12 +64,6 @@
   <div class="row form-actions justify-content-center mt-5">
     <%= f.button :submit, "Update", class: "btn-success" %>
   </div>
-
+  </div>
   <% end %>
 
-<p class="row button2 justify-content-center mt-2">Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<p class="row button2 justify-content-center mt-2"><%= link_to "Back", :back %></p>
-
-
-</div>
