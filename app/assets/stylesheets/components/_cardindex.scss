@@ -21,6 +21,7 @@
 p.text-center.badge.badge-pil.badge-danger {
   position: absolute;
   right: 16px;
+  top: 15px;
   background-color: white;
   color: red;
 }
@@ -35,4 +36,23 @@ p.text-center.badge.badge-pil.badge-success {
   right: 16px;
   background-color: white;
   color: green;
+}
+span.price {
+    display: block;
+}
+
+
+span.price .currency{
+  font-family: "Lato",sans-serif;
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: -2px;
+  padding: 0;
+  vertical-align: middle;
+}
+span.price .month{
+  font-family: "Lato",sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 3px;
 }
