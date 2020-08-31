@@ -22,23 +22,38 @@
 <% @bookings.each do |booking| %>
   <% if current_user == booking.user %>
     <div class="card-product justify-content-left">
-      <%= cl_image_tag booking.offer.user.photo.key, class:"border border-primary"  %>
-      <div class="card-product-infos">
-        <div class="d-flex justify-content-between">
-          <span class="badge badge-pill badge-dark">Locataire</span>
-          <span class="badge badge-pill badge-dark justify-content-right"><%= booking.status %></span>
+
+        <%= cl_image_tag booking.offer.user.photo.key, class:"border border-primary"  %>
+        <div class="card-product-infos">
+          <div class="d-flex justify-content-between">
+            <span class="badge badge-pill badge-dark">Locataire</span>
+            <span class="badge badge-pill badge-dark justify-content-right"><%= booking.status %></span>
+          </div>
+          <h2><%= booking.offer.name %></h2>
+          <p>Entreprise : <strong><%= booking.offer.user.name %></strong></p>
+          <span class="badge badge-pill <%= matching_color(booking.offer.matching_r(@user_logged)) %>"> Matching <%= booking.offer.matching_r(@user_logged) %>%</span>
+
         </div>
-        <h2><%= booking.offer.name %></h2>
-        <p>Entreprise : <strong><%= booking.offer.user.name %></strong></p>
-        <span class="badge badge-pill <%= matching_color(booking.offer.matching_r(@user_logged)) %>"> Matching <%= booking.offer.matching_r(@user_logged) %>%</span>
       </div>
-    </div>
+          <button class="collapsible">Réponses aux questions</button>
+      <div class="content">
+          <h5><%= booking.offer.question1 %></h5>
+          <em><%= booking.answer1 %></em>
+          <h5><%= booking.offer.question2 %></h5>
+          <em><%= booking.answer2 %></em>
+          <h5><%= booking.offer.question3 %></h5>
+          <em><%= booking.answer3 %></em>
+        </div>
     <br>
+
+
+
     <% if booking.status == "Discussion"   %>
       <button type="button" class="btn btn-info btn-sm">Discuter</button>
     <% end%>
-      <%= link_to "Annuler", accepter_path(booking), method: :post, class: "btn btn-secondary btn-sm" %>
+      <%= link_to "Annuler", cancel_path(booking), method: :post, class: "btn btn-secondary btn-sm" %>
       <br><br>
+
     <% elsif current_user == booking.offer.user %>
     <div class="card-product justify-content-left">
       <%= cl_image_tag booking.user.photo.key, class:"border border-primary"  %>
@@ -52,36 +67,53 @@
         <span class="badge badge-pill <%= matching_color(booking.offer.matching_r(booking.user)) %>"> Matching <%= booking.offer.matching_r(booking.user) %>%</span>
       </div>
     </div>
+    <button class="collapsible">Réponses aux questions</button>
+      <div class="content">
+          <h5><%= booking.offer.question1 %></h5>
+          <em><%= booking.answer1 %></em>
+          <h5><%= booking.offer.question2 %></h5>
+          <em><%= booking.answer2 %></em>
+          <h5><%= booking.offer.question3 %></h5>
+          <em><%= booking.answer3 %></em>
+        </div>
     <br>
 
     <% if booking.status == "Discussion"   %>
       <button type="button" class="btn btn-info btn-sm">Discuter</button>
     <% end%>
       <%= link_to "Accepter", accepter_path(booking), method: :post, class: "btn btn-primary btn-sm" %>
-      <%= link_to "Refuser", accepter_path(booking), method: :post, class: "btn btn-secondary btn-sm" %>
+      <%= link_to "Refuser", refused_path(booking), method: :post, class: "btn btn-secondary btn-sm" %>
       <br><br>
+
+
 
   <% end %>
 <% end%>
 
 </div>
 
-      <%# simple_form_for [booking.offer, booking] do |f| %>
-        <%#= f.input :status, value: "Discussion", as: :hidden %>
-        <%#= f.button :submit, class:"btn btn-outline-primary" %>
-      <%# end%>
 
 
-<!-- <div class="panel-group">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapse1">Collapsible panel</a>
-      </h4>
-    </div>
-    <div id="collapse1" class="panel-collapse collapse">
-      <div class="panel-body">Panel Body</div>
-      <div class="panel-footer">Panel Footer</div>
-    </div>
-  </div>
-</div> -->
+
+
+
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+</script>
+
+
+

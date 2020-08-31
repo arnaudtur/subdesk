@@ -1,0 +1,41 @@
+<div style="padding-bottom:70px;"></div>
+
+<div class="container justify-content-center">
+<div class="card">
+<div class="card-body">
+
+<div class="row">
+<div class="col-8", style="padding-right:15px;">
+<h1><%= @chatroom.name %></h1>
+<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+  <% @chatroom.messages.each do |message| %>
+    <div class="message-container" id="message-<%= message.id %>">
+      <i class="author">
+        <span><%= message.user.name %></span>
+        <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+      </i>
+      <p><%= message.content %></p>
+    </div>
+  <% end %>
+</div>
+<br><br><br><br>
+<div class="fixed-bottom">
+<div class="card-product" style="height:75px;">
+<div class="card-product-infos">
+<%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+  <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-4">
+<h1>Information sur la boite</h1>
+</div>
+</div>
+   
+</div>
+
+</div>
+</div>
