@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :bookings, only: [:index]
 
     post "bookings/:id/accepter_booking", to: "bookings#accepter_booking", as: "accepter"
+    post "bookings/:id/cancel_booking", to: "bookings#cancel_booking", as: "cancel"
+    post "bookings/:id/refused_booking", to: "bookings#refused_booking", as: "refused"
 
 
 end
