@@ -43,7 +43,7 @@
 </div>
 
 <div class="col-4">
-
+<div class="card" style="width: 16rem; padding: 16px; border-radius:8px;position: -webkit-sticky; position: sticky;">
 <% if @current_user.id == @chatroom.booking.offer.user.id%>
   <h1><%= @chatroom.booking.user.name%></h1>
   <%= cl_image_tag @chatroom.booking.user.photo.key, class:"img-thumbnail"%>
@@ -52,11 +52,12 @@
   <h1><%= @chatroom.booking.offer.user.name%></h1>
   <%= cl_image_tag @chatroom.booking.offer.photos.first.key, class:"img-thumbnail"%>
   <p>Status of the booking: <strong><%= @chatroom.booking.status %></strong></p>
+  <p>Seats available: <strong><%= @chatroom.booking.offer.seats %></strong></p>
 <%end%>
-
 </div>
 
 </div>
 </div>
 </div>
+</div>    
 </div>
