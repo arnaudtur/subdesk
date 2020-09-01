@@ -6,7 +6,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto align-items-center">
       <% if !user_signed_in? %>
        <li class="nav-item">
           <div class="d-flex flex-row-reverse">
@@ -16,9 +16,9 @@
           </div>
         </li>
       <% elsif user_signed_in? %>
-        <%= link_to "Mes Réservations",  bookings_path, class: "btn btn-outline-warning"%>
-        <%= link_to "Je trouve mes bureaux",  offers_path, class: "btn btn-outline-warning"%>
-        <%= link_to 'Nouvelle Annonce',  new_offer_path, class: "btn btn-outline-waring"%>
+        <%= link_to "Je trouve mes bureaux",  offers_path, class: ""%>
+        <%= link_to 'Nouvelle Annonce',  new_offer_path, class: ""%>
+        <%= link_to "Mes Réservations",  bookings_path, class: "btn btn-subdesk-sec"%>
         <li class="nav-item dropdown imgnav">
           <div class="d-flex flex-row-reverse">
             <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle m-2", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

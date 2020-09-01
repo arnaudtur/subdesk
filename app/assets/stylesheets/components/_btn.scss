@@ -1,0 +1,23 @@
+.btn-subdesk {
+  background: $purple;
+  padding: 15px 30px;
+  color: white !important;
+  font-size: 20px;
+  border-radius: 4px;
+  &:hover {
+    background: #6b71ff;
+  }
+}
+
+.btn-subdesk-sec {
+  background: white;
+  border: 1px solid $purple;
+  color: $purple !important;
+  padding: 15px 30px;
+  font-size: 20px;
+  border-radius: 4px;
+  &:hover {
+    border-color: #6b71ff;
+    color: #6b71ff !important;
+  }
+}
