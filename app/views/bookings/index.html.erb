@@ -4,13 +4,13 @@
     <h1 class="p-5" style="text-align: center ">Vos reservations</h1>
 
     </div>
-
 </div><br><br>
 <div class="container">
 <ul class="list-inline tabs-underlined justify-content-center" >
   <li>
-    <%= link_to "Candidatures (#{Booking.where(status:["Discussion","Pending"]).count})" , bookings_path(status:["Pending","Discussion"]), class: "tab-underlined #{'activex' if params[:status] == ["Pending","Discussion"]}" %>
+    <%= link_to "Candidatures " , bookings_path(status:["En Attente","Discussion"]), class: "tab-underlined #{'activex' if params[:status] == ["En Attente","Discussion"]}" %>
   </li>
+
   <li>
     <%= link_to "Validées", bookings_path(status:"Acceptée"), class: "tab-underlined #{'activex' if params[:status] == 'Acceptée'}"  %>
   </li>
@@ -53,11 +53,11 @@
     </div>
 
     <div class="btn-part">
-    <% if booking.status == "Pending" %>
-      <%= link_to "Annuler", cancel_path(booking), method: :post, class: "btn btn-secondary btn-sm" %><br>
+    <% if booking.status == "En Attente" %>
+      <%= link_to "Annuler", booking_cancel_path(booking), method: :get, class: "btn btn-secondary btn-sm" %><br>
     <% elsif booking.status == "Discussion"   %>
       <%= link_to "Discussion", chatroom_path(booking.chatroom.id), method: :get, class: "btn btn-info btn-sm" %><br>
-      <%= link_to "Annuler", cancel_path(booking), method: :post, class: "btn btn-secondary btn-sm" %><br>
+      <%= link_to "Annuler", booking_cancel_path(booking), method: :get, class: "btn btn-secondary btn-sm" %><br>
     <% else %>
     </div>
     <% end%>
@@ -94,13 +94,13 @@
       </div>
     <br>
     <div class="btn-part">
-    <% if booking.status == "Pending" %>
-      <%= link_to "Lancer la discussion", accepter_discuss_path(booking), method: :post, class: "btn btn-primary btn-sm" %><br>
-      <%= link_to "Refuser", refused_path(booking), method: :post, class: "btn btn-secondary btn-sm" %><br>
+    <% if booking.status == "En Attente" %>
+      <%= link_to "Lancer la discussion", booking_accepter_discuss_path(booking), class: "btn btn-primary btn-sm" %><br>
+      <%= link_to "Refuser", booking_refused_path(booking), class: "btn btn-secondary btn-sm" %><br>
     <% elsif booking.status == "Discussion"   %>
       <%= link_to "Discussion", chatroom_path(booking.chatroom.id), method: :get, class: "btn btn-info btn-sm" %><br>
-      <%= link_to "Accepter ", accepter_path(booking), method: :post, class: "btn btn-primary btn-sm" %><br>
-      <%= link_to "Refuser", refused_path(booking), method: :post, class: "btn btn-secondary btn-sm" %><br>
+      <%= link_to "Accepter ", booking_accepter_path(booking), class: "btn btn-primary btn-sm" %><br>
+      <%= link_to "Refuser", booking_refused_path(booking), class: "btn btn-secondary btn-sm" %><br>
     <% else%>
     <% end%>
     </div>
