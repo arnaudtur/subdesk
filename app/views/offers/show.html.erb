@@ -17,7 +17,7 @@
     <p><%=@offer.seats%> siège disponibles</p>
     <p><%=@offer.price%> €/poste</p>
     <%if @offer.user != current_user%>
-    <%= link_to "j'emménage", new_offer_booking_path(params[:id]), class:"btn btn-outline-primary" %>
+    <%= link_to "J'emménage", new_offer_booking_path(params[:id]), class:"btn btn-outline-primary" %>
     <%end%>
     </div>
     </div>
