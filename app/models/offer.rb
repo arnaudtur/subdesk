@@ -24,19 +24,91 @@ class Offer < ApplicationRecord
     matching = 0
     # logged_user = User.current
     if user.criteria1 == user_logged.criteria1
-      matching +=1
+      matching += 4
+    elsif ((user.criteria1.to_i) == (user_logged.criteria1.to_i + 1))
+      matching += 3
+    elsif ((user.criteria1.to_i) == (user_logged.criteria1.to_i - 1))
+      matching += 3
+    elsif ((user.criteria1.to_i) == (user_logged.criteria1.to_i + 2))
+      matching += 1
+    elsif ((user.criteria1.to_i) == (user_logged.criteria1.to_i - 2))
+      matching += 1
     end
+
     if user.criteria2 == user_logged.criteria2
-      matching +=1
+      matching += 4
+    elsif ((user.criteria2.to_i) == (user_logged.criteria2.to_i + 1)) || ((user.criteria2.to_i) == (user_logged.criteria2.to_i - 1))
+      matching += 3
+    elsif ((user.criteria2.to_i) == (user_logged.criteria2.to_i + 2)) || ((user.criteria2.to_i) == (user_logged.criteria2.to_i - 2))
+      matching += 1
     end
+
     if user.criteria3 == user_logged.criteria3
-      matching +=1
+      matching += 4
+    elsif ((user.criteria3.to_i) == (user_logged.criteria3.to_i + 1)) || ((user.criteria3.to_i) == (user_logged.criteria3.to_i - 1))
+      matching += 3
+    elsif ((user.criteria3.to_i) == (user_logged.criteria3.to_i + 2)) || ((user.criteria3.to_i) == (user_logged.criteria3.to_i - 2))
+      matching += 1
     end
+
     if user.criteria4 == user_logged.criteria4
-      matching +=1
+      matching += 4
+    elsif ((user.criteria4.to_i) == (user_logged.criteria4.to_i + 1)) || ((user.criteria4.to_i) == (user_logged.criteria4.to_i - 1))
+      matching += 3
+    elsif ((user.criteria4.to_i) == (user_logged.criteria4.to_i + 2)) || ((user.criteria4.to_i) == (user_logged.criteria4.to_i - 2))
+      matching += 1
     end
+
+    if user.criteria5 == user_logged.criteria5
+      matching += 4
+    elsif ((user.criteria5.to_i) == (user_logged.criteria5.to_i + 1)) || ((user.criteria5.to_i) == (user_logged.criteria5.to_i - 1))
+      matching += 3
+    elsif ((user.criteria5.to_i) == (user_logged.criteria5.to_i + 2)) || ((user.criteria5.to_i) == (user_logged.criteria5.to_i - 2))
+      matching += 1
+    end
+
+    if user.criteria6 == user_logged.criteria6
+      matching += 4
+    elsif ((user.criteria6.to_i) == (user_logged.criteria6.to_i + 1)) || ((user.criteria6.to_i) == (user_logged.criteria6.to_i - 1))
+      matching += 3
+    elsif ((user.criteria6.to_i) == (user_logged.criteria6.to_i + 2)) || ((user.criteria6.to_i) == (user_logged.criteria6.to_i - 2))
+      matching += 1
+    end
+
+    if user.criteria7 == user_logged.criteria7
+      matching += 4
+    elsif ((user.criteria7.to_i) == (user_logged.criteria7.to_i + 1)) || ((user.criteria7.to_i) == (user_logged.criteria7.to_i - 1))
+      matching += 3
+    elsif ((user.criteria7.to_i) == (user_logged.criteria7.to_i + 2)) || ((user.criteria7.to_i) == (user_logged.criteria7.to_i - 2))
+      matching += 1
+    end
+
+    if user.criteria8 == user_logged.criteria8
+      matching += 4
+    elsif ((user.criteria8.to_i) == (user_logged.criteria8.to_i + 1)) || ((user.criteria8.to_i) == (user_logged.criteria8.to_i - 1))
+      matching += 3
+    elsif ((user.criteria8.to_i) == (user_logged.criteria8.to_i + 2)) || ((user.criteria7.to_i) == (user_logged.criteria8.to_i - 2))
+      matching += 1
+    end
+
+    if user.criteria9 == user_logged.criteria9
+      matching += 4
+    elsif ((user.criteria9.to_i) == (user_logged.criteria9.to_i + 1)) || ((user.criteria9.to_i) == (user_logged.criteria9.to_i - 1))
+      matching += 3
+    elsif ((user.criteria9.to_i) == (user_logged.criteria9.to_i + 2)) || ((user.criteria9.to_i) == (user_logged.criteria9.to_i - 2))
+      matching += 1
+    end
+
+    if user.criteria10 == user_logged.criteria10
+      matching += 4
+    elsif ((user.criteria10.to_i) == (user_logged.criteria10.to_i + 1)) || ((user.criteria10.to_i) == (user_logged.criteria10.to_i - 1))
+      matching += 3
+    elsif ((user.criteria10.to_i) == (user_logged.criteria7.to_i + 2)) || ((user.criteria10.to_i) == (user_logged.criteria10.to_i - 2))
+      matching += 1
+    end
+    
     # raise
-    matching_rate = (matching * 100) / 4
+    matching_rate = (matching * 100) / 40
   end
 end
 
