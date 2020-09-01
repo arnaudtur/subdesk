@@ -20,6 +20,11 @@ class Offer < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
+  # def my_bookings(user)
+  # return Offer.where(user_id: user.id).count
+  # end
+
+
   def matching_r(user_logged)
     matching = 0
     # logged_user = User.current

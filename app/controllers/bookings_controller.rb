@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   def index
     @bookings = policy_scope(Booking)
     @user_logged = current_user
-    params[:status] = params[:status] || ["Pending", "Discussion"]
+    params[:status] = params[:status] || ["En Attente", "Discussion"]
     @bookings = @bookings.where(status:params[:status])
   end
 
@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(params_bookings)
     @booking.offer = Offer.find(params[:offer_id])
-    @booking.status = 'Pending'
+    @booking.status = 'En Attente'
     authorize @booking
     @booking.user = current_user
     if @booking.save
@@ -41,7 +41,7 @@ class BookingsController < ApplicationController
   end
 
   def accepter_discuss_booking
-    @booking = Booking.find(params[:id])
+    @booking = Booking.find(params[:booking_id])
     @booking.status = "Discussion"
     @chatroom = Chatroom.new
     @chatroom.booking = @booking
@@ -52,7 +52,7 @@ class BookingsController < ApplicationController
   end
 
   def accepter_booking
-    @booking = Booking.find(params[:id])
+    @booking = Booking.find(params[:booking_id])
     if @booking.status == "Discussion"
     @booking.status = "Acceptée"
     @booking.save
@@ -62,7 +62,7 @@ class BookingsController < ApplicationController
   end
 
   def cancel_booking
-    @booking = Booking.find(params[:id])
+    @booking = Booking.find(params[:booking_id])
     @booking.status = "Annulée"
     @booking.save
     redirect_to bookings_path
@@ -70,7 +70,7 @@ class BookingsController < ApplicationController
   end
 
   def refused_booking
-    @booking = Booking.find(params[:id])
+    @booking = Booking.find(params[:booking_id])
     @booking.status = "Refusée"
     @booking.save
     redirect_to bookings_path
