@@ -4,7 +4,7 @@
         <!-- Card image -->
         <div class="view overlay">
         <% offer.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 120, width: 250, crop: "fill", class:"imagecard"%>
+          <%= cl_image_tag photo.key, height: 140, width: 250, crop: "fill", class:"imagecard"%>
         <p class="text-center badge badge-pil <%= matching_color(offer.matching_r(@user_logged)) %>"> Matching: <%= offer.matching_r(@user_logged) %>%</p>
         <%end%>
         </div>
