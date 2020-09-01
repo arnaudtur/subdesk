@@ -1,7 +1,7 @@
 <div style="padding-bottom:70px;"></div>
 
 <div class="container justify-content-center" style="position:relative;">
-<div class="card"  style="border-radius:8px; border:1px solid; min-height:550px;text-align: left;">
+<div class="card"  style="border-radius:8px; border:1px solid; min-height:8vh;text-align: left;">
 <div class="card-body">
 
 <div class="row">
@@ -38,7 +38,7 @@
     <%if current_user.id == @chatroom.booking.offer.user.id%>
         <div class="pl-4 pt-2", style="width:70vw;"><%= f.input :content, label: false, placeholder: "Envoyez un message a votre futur locataire!" %></div>
     <%else%>
-        <div class="pl-4 pt-2", style="width:70vw;"><%= f.input :content, label: false, placeholder: "Envoyez un message a votre futur loueur!" %></div>    
+        <div class="pl-4 pt-2", style="width:70vw;"><%= f.input :content, label: false, placeholder: "Envoyez un message a votre futur loueur!" %></div>
     <%end%>
         <div class="ml-4 pt-2", style="width:15vw;"><%= f.button :submit, class:"btn btn-outline-primary"%></div>
       </div>
@@ -77,8 +77,8 @@
 </g>
 </svg>
   <p>Status of the booking: <strong><%= @chatroom.booking.status %></strong></p>
-  <%= link_to "Accepter ", accepter_path(@chatroom.booking), method: :post, class: "btn btn-primary btn-sm" %><br>
-  <%= link_to "Refuser", refused_path(@chatroom.booking), method: :post, class: "btn btn-secondary btn-sm" %><br>
+  <%= link_to "Accepter ", booking_accepter_path(@chatroom.booking), class: "btn btn-primary btn-sm" %><br>
+  <%= link_to "Refuser", booking_refused_path(@chatroom.booking), class: "btn btn-secondary btn-sm" %><br>
 <% else %>
   <div class="d-flex" style="justify-content:space-between;">
   <h1><%= @chatroom.booking.user.name%></h1>
@@ -110,7 +110,7 @@
   <p>Status of the booking: <strong><%= @chatroom.booking.status %></strong></p>
   <p>Seats available: <strong><%= @chatroom.booking.offer.seats %></strong></p>
   <p>Price per seat: <strong><%= @chatroom.booking.offer.price %></strong></p>
-  <%= link_to "Annuler", cancel_path(@chatroom.booking), method: :post, class: "btn btn-secondary btn-sm" %><br>
+  <%= link_to "Annuler", booking_cancel_path(@chatroom.booking), class: "btn btn-secondary btn-sm" %><br>
 <%end%>
 
 </div>
