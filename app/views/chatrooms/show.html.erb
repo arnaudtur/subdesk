@@ -43,7 +43,7 @@
 </div>
 
 <div class="col-4">
-<div class="card" style="width: 16rem; padding: 16px; border-radius:8px;position: -webkit-sticky; position: sticky;border-left:1px solid;border-bottom:1px solid; position:absolute; right:30px;">
+<div class="card" id="deskcafe" style="width: 16rem; padding: 16px; border-radius:8px;position: -webkit-sticky; position: sticky;border-left:1px solid;border-bottom:1px solid; position:absolute; right:30px;">
 <% if @current_user.id == @chatroom.booking.offer.user.id%>
   <div class="d-flex" style="justify-content:space-between;">
   <h1><%= @chatroom.booking.user.name%></h1>

@@ -10,7 +10,7 @@
           params[:address],
           class: "form-control",
           placeholder: "Ville",
-          style:"border:0px;border-radius:0px;height:35px;border-top-left-radius:8px;border-bottom-left-radius:8px;color:#fa26a0;font-weight:bold;text-align: center;"
+          style:"border:0px;border-radius:0px;height:35px;border-top-left-radius:8px;border-bottom-left-radius:8px;font-weight:bold;text-align: center;"
         %>
         </div>
         <div>
@@ -40,7 +40,7 @@
           style: "border:0px;border-radius:0px;height:35px;font-weight:bold;text-align: center;"
         %>
         </div>
-      <%= submit_tag "Rechercher", class: "btn btn-success pl-5 pr-5", style:"height:35px;border:0px;border-radius:0px; color:white; font-weight:bold;border-top-right-radius:8px;border-bottom-right-radius:8px;" %>
+      <%= submit_tag "Rechercher", class: "btn btn-success pl-5 pr-5", style:"height:35px;border:0px;border-radius:0px; color:white; font-weight:bold;border-top-right-radius:8px;border-bottom-right-radius:8px; background-color: #878CFF;" %>
       <% end %>
     </div>
   </div>
@@ -54,7 +54,7 @@
             <%cards_count += 1 %>
             <%end%>
             <%end%>
-           <strong><span style="color:#2AFEF1;"><%=cards_count%></span></strong> annonces pour votre recherche
+           <strong><span style="color:#878CFF;"><%=cards_count%></span></strong> annonces pour votre recherche
 
   </h4>
 </div>
