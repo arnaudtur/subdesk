@@ -33,7 +33,7 @@
         <%= cl_image_tag booking.offer.user.photo.key, class:"border border-primary"  %>
         <div class="card-product-infos">
           <div class="d-flex justify-content-between">
-            <span class="badge badge-pill badge-dark p-2">Locataire</span>
+            <span class="badge badge-pill badge-secondary p-2">Landlord</span>
             <span class="badge badge-pill badge-dark justify-content-right p-2"><%= booking.status %></span>
           </div>
           <h2><%= booking.offer.name %></h2>
@@ -74,7 +74,7 @@
       <%= cl_image_tag booking.user.photo.key, class:"border border-primary"  %>
       <div class="card-product-infos">
         <div class="d-flex justify-content-between">
-          <span class="badge badge-pill badge-light p-2">Landlord</span>
+          <span class="badge badge-pill badge-dark p-2">Locataire</span>
           <span class="badge badge-pill badge-dark justify-content-right p-2"><%= booking.status %></span>
         </div>
         <h2><%= booking.offer.name %></h2>
