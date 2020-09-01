@@ -44,3 +44,13 @@
 .item {
   align-self: auto;
 }
+
+
+.active::after {
+    content: none;
+}
+
+
+.nav-link:hover {
+  color: grey;
+}

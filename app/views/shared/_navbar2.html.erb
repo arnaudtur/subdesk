@@ -16,9 +16,8 @@
           </div>
         </li>
       <% elsif user_signed_in? %>
-        <%= link_to "Je trouve mes bureaux",  offers_path, class: ""%>
-        <%= link_to 'Nouvelle Annonce',  new_offer_path, class: ""%>
-        <%= link_to "Mes Réservations",  bookings_path, class: "btn btn-subdesk-sec"%>
+        <%= link_to "Je trouve mes bureaux",  offers_path, class: "btn btn-subdesk-sec"%>
+        <%= link_to "Mes réservations",  bookings_path, class: "resa"%>
         <li class="nav-item dropdown imgnav">
           <div class="d-flex flex-row-reverse">
             <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle m-2", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
