@@ -8,4 +8,12 @@ $orange: #E67E22;
 $green: #2AFEF1;
 $gray: #0E0000;
 $light-gray: white;
+$purple: #878cff;
 
+.bg-purple {
+  background: $purple;
+  color: white;
+  hr {
+    border-top: 1px solid rgba(200, 200, 200, 1);
+  }
+}

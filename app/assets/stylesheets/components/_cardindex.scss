@@ -40,7 +40,8 @@ p.text-center.badge.badge-pil.badge-success {
   color: green;
 }
 span.price {
-    display: block;
+    display: flex;
+    align-items: flex-end;
 }
 
 
@@ -48,7 +49,7 @@ span.price .currency {
     font-family: "Lato",sans-serif;
     font-size: 28px;
     font-weight: 300;
-    letter-spacing: -2px;
+    // letter-spacing: 1px;
     padding: 0;
     vertical-align: middle;
     line-height: 28px;
@@ -58,5 +59,12 @@ span.price .month {
     font-family: "Lato",sans-serif;
     font-size: 15px;
     font-weight: 400;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
+    opacity: .6;
+}
+
+
+span.nb-results {
+    color: $purple;
+    font-size: 35px;
 }
