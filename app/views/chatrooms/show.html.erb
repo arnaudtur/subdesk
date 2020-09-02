@@ -1,121 +1,122 @@
 <div style="padding-bottom:120px;"></div>
+  <div class="d-flex">
+    <div class="container col-8 fixed-left">
+      <div class="card"  style="width:70vw;border-radius:8px; border:1px solid; min-height:80vh;text-align:left;margin-bottom:50px;padding-left:16px;">
+      <div class="card-body">
+      <div class="row">
+      <h1><%= @chatroom.name %></h1>
+      <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+      <% @chatroom.messages.each do |message| %>
+      <div class="message-container" id="message-<%= message.id %>">
+      <%if current_user.id != message.user.id%>
+        <div style="text-decoration: underline;">
+        <small style="font-weight:bold;">
+        <span><%= "#{message.user.name}, le" %></span>
+        <%= message.created_at.strftime("%d/%m/%y à %H:%M :") %>
+        </small>
+        </div>
+        <p><%= message.content %></p>
+      <%else%>
+        <div style="text-decoration: underline;">
+        <small style="font-weight:bold;">
+        <span><%= "#{message.user.name} (vous), le" %></span>
+        <%= message.created_at.strftime("%d/%m/%y à %H:%M :") %>
+        </small>
+        </div>
+        <p><%= message.content %></p>
+      <%end%>
+        </div>
+      <% end %>
 
-<div class="container justify-content-center" style="position:relative;">
-<div class="card"  style="border-radius:8px; border:1px solid; min-height:80vh;text-align: left;">
-<div class="card-body">
-
-<div class="row">
-<div class="col-8", style="padding-right:15px;">
-<h1><%= @chatroom.name %></h1>
-<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-  <% @chatroom.messages.each do |message| %>
-    <div class="message-container" id="message-<%= message.id %>">
-  <%if current_user.id != message.user.id%>
-    <div style="text-decoration: underline;">
-    <small style="font-weight:bold;">
-    <span><%= "#{message.user.name}, le" %></span>
-    <%= message.created_at.strftime("%d/%m/%y à %H:%M :") %>
-    </small>
-    </div>
-    <p><%= message.content %></p>
-  <%else%>
-    <div style="text-decoration: underline;">
-    <small style="font-weight:bold;">
-    <span><%= "#{message.user.name} (vous), le" %></span>
-    <%= message.created_at.strftime("%d/%m/%y à %H:%M :") %>
-    </small>
-    </div>
-    <p><%= message.content %></p>
-  <%end%>
-    </div>
-  <% end %>
-</div>
-<br><br><br><br>
-<div class="fixed-bottom mx-5">
-  <div class="card-product" style="height:60px; width:80vw; margin-left: auto; margin-right: auto;">
-    <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-    <div class="d-flex justify-content-space-between">
-    <%if current_user.id == @chatroom.booking.offer.user.id%>
-        <div class="pl-4 pt-2", style="width:63vw;"><%= f.input :content, label: false, placeholder: "Envoyez un message a votre futur locataire!" %></div>
-    <%else%>
-        <div class="pl-4 pt-2", style="width:63vw;"><%= f.input :content, label: false, placeholder: "Envoyez un message a votre futur loueur!" %></div>
-    <%end%>
-        <div class="ml-4 pt-2", style="width:15vw;"><%= f.button :submit, class:"btn btn-outline-primary"%></div>
+        <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+        <div class="d-flex justify-content-space-between fixed-bottom mx-3" style="width:70vw;padding-right:15px;padding-top:10px;background-color:#878cff;height:60px;border-left:1px light;">
+        <%if current_user.id == @chatroom.booking.offer.user.id%>
+          <div class="pl-4 pt-2", style="width:50vw;"><%= f.input :content, label: false, placeholder: "Envoyez un message a votre futur locataire!" %></div>
+        <%else%>
+          <div class="pl-4 pt-2", style="width:50vw;"><%= f.input :content, label: false, placeholder: "Envoyez un message a votre futur loueur!" %></div>
+        <%end%>
+        <div class="ml-4 pt-2", style="width:15vw;"><%= f.button :submit, "Envoyer le message",class:"btn btn-subdeskchatroom"%></div>
+        </div>
+        <% end %>
       </div>
-  <% end %>
+    </div>
   </div>
-  </div>
+
+
 </div>
+</div>
+
 
 <div class="col-4">
-<div class="card" id="deskcafe" style="width: 16rem; padding: 16px; border-radius:8px;position: -webkit-sticky; position: sticky;border-left:1px solid;border-bottom:1px solid; position:absolute; right:30px;">
+<div class="card" id="deskcafe" style="width: 14vw; padding: 8px; border-radius:8px;  position: absolute; left: 10em; width: 20vw; height: 23em;">
 <% if @current_user.id == @chatroom.booking.offer.user.id%>
-  <div class="d-flex" style="justify-content:space-between;">
-  <h1><%= @chatroom.booking.user.name%></h1>
-  <%= cl_image_tag @chatroom.booking.user.photo.key, class:"avatar", style:"border:1px solid;"%>
-  </div>
-  <svg width="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="study">
-<rect width="64"/>
-<g id="smoke">
-<path id="smoke-2" d="M9 21L9.55279 19.8944C9.83431 19.3314 9.83431 18.6686 9.55279 18.1056L9 17L8.44721 15.8944C8.16569 15.3314 8.16569 14.6686 8.44721 14.1056L9 13" stroke="#797270"/>
-<path id="smoke-1" d="M6.5 22L7.05279 20.8944C7.33431 20.3314 7.33431 19.6686 7.05279 19.1056L6.5 18L5.94721 16.8944C5.66569 16.3314 5.66569 15.6686 5.94721 15.1056L6.5 14" stroke="#797270"/>
-</g>
-<g id="laptop">
-<rect id="laptop-base" x="17" y="28" width="20" height="3" fill="#F3F3F3" stroke="#453F3C" stroke-width="2"/>
-<rect id="laptop-screen" x="18" y="17" width="18" height="11" fill="#5A524E" stroke="#453F3C" stroke-width="2"/>
-<rect id="line-1" x="20" y="19" width="14" height="1" fill="#F78764"/>
-<rect id="line-2" x="20" y="21" width="14" height="1" fill="#F9AB82"/>
-<rect id="line-3" x="20" y="23" width="14" height="1" fill="#F78764"/>
-<rect id="line-4" x="20" y="25" width="14" height="1" fill="#F9AB82"/>
-</g>
-<g id="cup">
-<rect id="Rectangle 978" x="5" y="24" width="5" height="7" fill="#CCC4C4" stroke="#453F3C" stroke-width="2"/>
-<path id="Ellipse 416" d="M11 28C12.1046 28 13 27.1046 13 26C13 24.8954 12.1046 24 11 24" stroke="#453F3C" stroke-width="2"/>
-<rect id="Rectangle 996" x="6" y="25" width="3" height="1" fill="#D6D2D1"/>
-</g>
-</g>
-</svg>
-  <p>Status de la réservation: <strong><%= @chatroom.booking.status %></strong></p>
-  <%= link_to "Accepter ", booking_accepter_path(@chatroom.booking), class: "btn btn-primary btn-sm" %><br>
-  <%= link_to "Refuser", booking_refused_path(@chatroom.booking), class: "btn btn-secondary btn-sm" %><br>
-<% else %>
-  <div class="d-flex" style="justify-content:space-between;">
-  <h1><%= @chatroom.booking.user.name%></h1>
-  <%= cl_image_tag @chatroom.booking.offer.user.photo.key, class:"avatar", style:"border:1px solid;"%>
-  </div>
-  <svg width="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="study">
-<rect width="64"/>
-<g id="smoke">
-<path id="smoke-2" d="M9 21L9.55279 19.8944C9.83431 19.3314 9.83431 18.6686 9.55279 18.1056L9 17L8.44721 15.8944C8.16569 15.3314 8.16569 14.6686 8.44721 14.1056L9 13" stroke="#797270"/>
-<path id="smoke-1" d="M6.5 22L7.05279 20.8944C7.33431 20.3314 7.33431 19.6686 7.05279 19.1056L6.5 18L5.94721 16.8944C5.66569 16.3314 5.66569 15.6686 5.94721 15.1056L6.5 14" stroke="#797270"/>
-</g>
-<g id="laptop">
-<rect id="laptop-base" x="17" y="28" width="20" height="3" fill="#F3F3F3" stroke="#453F3C" stroke-width="2"/>
-<rect id="laptop-screen" x="18" y="17" width="18" height="11" fill="#5A524E" stroke="#453F3C" stroke-width="2"/>
-<rect id="line-1" x="20" y="19" width="14" height="1" fill="#F78764"/>
-<rect id="line-2" x="20" y="21" width="14" height="1" fill="#F9AB82"/>
-<rect id="line-3" x="20" y="23" width="14" height="1" fill="#F78764"/>
-<rect id="line-4" x="20" y="25" width="14" height="1" fill="#F9AB82"/>
-</g>
-<g id="cup">
-<rect id="Rectangle 978" x="5" y="24" width="5" height="7" fill="#CCC4C4" stroke="#453F3C" stroke-width="2"/>
-<path id="Ellipse 416" d="M11 28C12.1046 28 13 27.1046 13 26C13 24.8954 12.1046 24 11 24" stroke="#453F3C" stroke-width="2"/>
-<rect id="Rectangle 996" x="6" y="25" width="3" height="1" fill="#D6D2D1"/>
-</g>
-
-</g>
-</svg>
-   <div class="sticky", style="position: -webkit-sticky; position: sticky; top: 20px;">
-  <p>Status de la réservation: <strong><%= @chatroom.booking.status %></strong></p>
-  <p>Sièges disponibles: <strong><%= @chatroom.booking.offer.seats %></strong></p>
-  <p>prix par siège: <strong><%= @chatroom.booking.offer.price %></strong></p>
-  <%= link_to "Annuler", booking_cancel_path(@chatroom.booking), class: "btn btn-secondary btn-sm" %><br>
-<%end%>
-
+<div class="d-flex" style="justify-content:space-between;">
+<h1><%= @chatroom.booking.user.name%></h1>
+<%= cl_image_tag @chatroom.booking.user.photo.key, class:"avatar", style:"border:1px solid;"%>
 </div>
+<svg width="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="study">
+<rect width="64"/>
+<g id="smoke">
+<path id="smoke-2" d="M9 21L9.55279 19.8944C9.83431 19.3314 9.83431 18.6686 9.55279 18.1056L9 17L8.44721 15.8944C8.16569 15.3314 8.16569 14.6686 8.44721 14.1056L9 13" stroke="#797270"/>
+<path id="smoke-1" d="M6.5 22L7.05279 20.8944C7.33431 20.3314 7.33431 19.6686 7.05279 19.1056L6.5 18L5.94721 16.8944C5.66569 16.3314 5.66569 15.6686 5.94721 15.1056L6.5 14" stroke="#797270"/>
+</g>
+<g id="laptop">
+<rect id="laptop-base" x="17" y="28" width="20" height="3" fill="#F3F3F3" stroke="#453F3C" stroke-width="2"/>
+<rect id="laptop-screen" x="18" y="17" width="18" height="11" fill="#5A524E" stroke="#453F3C" stroke-width="2"/>
+<rect id="line-1" x="20" y="19" width="14" height="1" fill="#F78764"/>
+<rect id="line-2" x="20" y="21" width="14" height="1" fill="#F9AB82"/>
+<rect id="line-3" x="20" y="23" width="14" height="1" fill="#F78764"/>
+<rect id="line-4" x="20" y="25" width="14" height="1" fill="#F9AB82"/>
+</g>
+<g id="cup">
+<rect id="Rectangle 978" x="5" y="24" width="5" height="7" fill="#CCC4C4" stroke="#453F3C" stroke-width="2"/>
+<path id="Ellipse 416" d="M11 28C12.1046 28 13 27.1046 13 26C13 24.8954 12.1046 24 11 24" stroke="#453F3C" stroke-width="2"/>
+<rect id="Rectangle 996" x="6" y="25" width="3" height="1" fill="#D6D2D1"/>
+</g>
+</g>
+</svg>
+<div style=" text-align:left;">
+<p>Status de la réservation: <strong><%= @chatroom.booking.status %></strong></p>
+<%= link_to "Accepter ", booking_accepter_path(@chatroom.booking), class: "btn btn-primary btn-sm" %><br>
+<br>
+<%= link_to "Refuser", booking_refused_path(@chatroom.booking), class: "btn btn-secondary btn-sm" %><br>
+</div>
+<% else %>
+<div class="d-flex" style="justify-content:space-between;">
+<h1><%= @chatroom.booking.user.name%></h1>
+<%= cl_image_tag @chatroom.booking.offer.user.photo.key, class:"avatar", style:"border:1px solid;"%>
+</div>
+<svg width="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="study">
+<rect width="64"/>
+<g id="smoke">
+<path id="smoke-2" d="M9 21L9.55279 19.8944C9.83431 19.3314 9.83431 18.6686 9.55279 18.1056L9 17L8.44721 15.8944C8.16569 15.3314 8.16569 14.6686 8.44721 14.1056L9 13" stroke="#797270"/>
+<path id="smoke-1" d="M6.5 22L7.05279 20.8944C7.33431 20.3314 7.33431 19.6686 7.05279 19.1056L6.5 18L5.94721 16.8944C5.66569 16.3314 5.66569 15.6686 5.94721 15.1056L6.5 14" stroke="#797270"/>
+</g>
+<g id="laptop">
+<rect id="laptop-base" x="17" y="28" width="20" height="3" fill="#F3F3F3" stroke="#453F3C" stroke-width="2"/>
+<rect id="laptop-screen" x="18" y="17" width="18" height="11" fill="#5A524E" stroke="#453F3C" stroke-width="2"/>
+<rect id="line-1" x="20" y="19" width="14" height="1" fill="#F78764"/>
+<rect id="line-2" x="20" y="21" width="14" height="1" fill="#F9AB82"/>
+<rect id="line-3" x="20" y="23" width="14" height="1" fill="#F78764"/>
+<rect id="line-4" x="20" y="25" width="14" height="1" fill="#F9AB82"/>
+</g>
+<g id="cup">
+<rect id="Rectangle 978" x="5" y="24" width="5" height="7" fill="#CCC4C4" stroke="#453F3C" stroke-width="2"/>
+<path id="Ellipse 416" d="M11 28C12.1046 28 13 27.1046 13 26C13 24.8954 12.1046 24 11 24" stroke="#453F3C" stroke-width="2"/>
+<rect id="Rectangle 996" x="6" y="25" width="3" height="1" fill="#D6D2D1"/>
+</g>
 
+</g>
+</svg>
+<div style=" text-align:left;">
+<p>Status de la réservation: <strong><%= @chatroom.booking.status %></strong></p>
+<p>Sièges disponibles: <strong><%= @chatroom.booking.offer.seats %></strong></p>
+<p>prix par siège: <strong><%= @chatroom.booking.offer.price %></strong></p>
+<%= link_to "Annuler", booking_cancel_path(@chatroom.booking), class: "btn btn-secondary btn-sm" %><br>
+</div>
+<%end%>
 </div>
 </div>
 </div>
