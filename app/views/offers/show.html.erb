@@ -17,12 +17,20 @@
     <div class="card" style="width: 16rem; padding: 16px; border-radius:8px;position: -webkit-sticky; position: sticky; top: 20px;">
     <h4 class="mx-auto"><strong><%=@offer.user.name%></strong></h4>
     <%= cl_image_tag @offer.user.photo.key, class:"img-thumbnail"%>
+    <div style="text-align:left; font-size:14px;">
+    <br>
     <p><%=@offer.address%></p>
-    <p><%=@offer.seats%> siège disponibles</p>
-    <p><%=@offer.price%> €/poste</p>
+    <p><%=@offer.seats%> <i class="fas fa-male"></i></p>
+    <p><%=@offer.price%> <i class="fas fa-euro-sign"></i> / <i class="fas fa-male"></i></p>
+    </div>
     <%if @offer.user != current_user%>
     <%= link_to "J'emménage", new_offer_booking_path(params[:id]), class:"btn btn-subdesk" %>
     <%= link_to "Profil", user_path(@offer.user_id), class:"btn btn-subdesk", style:"margin-top:15px;" %>
+    <%else%>
+    <%= link_to 'Modifier votre offre', edit_offer_path, class:"btn btn-subdesk"%>
+    <%= button_to "Supprimer l'offre", {:controller => :offers,
+      :action => 'destroy', :id => @offer.id }, :method => :delete, class:"btn btn-subdesk", style:"margin-top:15px;" %>
+
     <%end%>
     </div>
     </div>
@@ -43,22 +51,11 @@
       <br><br>
       </div>
 
-      <div class="d-flex justify-content-center" style="padding-right:10px;">
-      <% if @offer.user == current_user %>
-        <%= link_to 'Modifier votre offre', edit_offer_path, class:"btn btn-outline-primary" %>
-        <%= button_to "Supprimer", {:controller => :offers,
-            :action => 'destroy', :id => @offer.id }, :method => :delete, class:"btn btn-outline-primary"  %>
-      <%else%>
-
-        <br>
-      <%end%>
-    <br>
-    </div>
     </div>
    <div class="col">
    <div class="sticky", style="position: -webkit-sticky; position: sticky; top: 20px;">
    <div id="map"
-     style="width: 100%; height: 600px;"
+     style="width: 100%; height: 600px;border-radius:8px; align-items:left;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
