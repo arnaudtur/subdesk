@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>Cette page n'existe pas (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8">
+
   <style>
 @import url('https://fonts.googleapis.com/css?family=Lato|Roboto+Slab');
 
@@ -50,7 +52,7 @@ h1 {
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
 <section class="centered">
-  <h1>500 Server Error</h1>
+  <h1>404 page non trouvée</h1>
   <div class="container">
     <span class="message" id="js-whoops"></span> <span class="message" id="js-appears"></span> <span class="message" id="js-error"></span> <span class="message" id="js-apology"></span>
     <div><span class="hidden" id="js-hidden">Message Here</span></div>
@@ -59,9 +61,9 @@ h1 {
 <script>
 // Here are the different messages we'll use for creating the 500 displayable message
 const messages = [
-  ['Mince.', 'Pardon.', 'Excusez moi.', 'Mon dieu.', 'Ca alors.', 'Hm...', 'C est étrange.'],
+  ['Mince.', 'Excusez moi.', 'Mon dieu.', 'Ca alors.', 'Hm...', 'C est étrange.'],
   ["J'ai l'impression que", 'Il apparait que', 'Malheureusement,', 'Il arrive que'],
-  ['il y a une erreur.', 'on a tout cassé.', 'quelque chose de terrible est arrivée.', 'le serveur a craché'],
+  ["la page que tu cherches n'existe pas.", "cette page n'existe pas, ça n'a aucun sens.", "pouf cette page n'est pas la, c'est vraiment de la magie noire"],
   ['Désolé on rend l argent.', 'Nos excuses nos devs sont nul.', 'Ooopsie.', 'On est vraiment désolé.', 'désolé sidi.']
 ];
 
