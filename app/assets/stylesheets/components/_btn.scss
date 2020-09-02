@@ -9,9 +9,21 @@
   }
 }
 
+
+.btn-subdesk-2 {
+  background: $purple;
+  padding: 15px 30px;
+  color: white !important;
+  font-size: 16px;
+  border-radius: 4px;
+  &:hover {
+    background: #6b71ff;
+  }
+}
+
 .btn-subdesk-sec {
-  background: #6b71ff;
-  border-color: #6b71ff;
+  background: #878CFF;
+  border-color: #878CFF;
   color: white !important;
   padding: 15px 30px;
   font-size: 15px;
@@ -24,25 +36,12 @@
   }
 }
 
-.btn-subdesk-2 {
-  background: transparent;
-  padding: 15px 30px;
-  color: white !important;
-  font-size: 15px;
-  border-radius: 4px;
-  &:hover {
-    background: transparent;
-    color: white !important;
-    opacity: 0.8;
-  }
-}
-
 
 .btn-subdesk-3 {
   background: transparent;
-  border-color: #6b71ff;
+  border-color: #878CFF;
   padding: 15px 30px;
-  color: #6b71ff !important;
+  color: #878CFF !important;
   font-size: 15px;
   border-radius: 4px;
   margin-right: 20px;
