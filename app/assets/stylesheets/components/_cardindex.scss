@@ -9,6 +9,14 @@
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1rem;
+  .collapse-content {
+      text-align: left;
+  }
+  .float-left {
+      font-size: 20px;
+      font-weight: 500;
+  }
+
 
 }
 .container a {
@@ -67,4 +75,7 @@ span.price .month {
 span.nb-results {
     color: $purple;
     font-size: 35px;
+}
+.card.promoting-card.mb-5.ml-5.d-flex {
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
