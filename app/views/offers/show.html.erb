@@ -1,10 +1,13 @@
-<div style="padding-bottom:70px;"></div>
-<div class="header-bookings" style="height: 100px;">
-  <div class="container1">
-    <h1 class="p-5" style="text-align: center "><%=@offer.name%></h1>
-
-    </div>
+<div class="user-header">
+  <div class="my-auto">
+      <%= cl_image_tag @offer.user.photo.key, class: "img_header" %>
+      <div class="name_company_div">
+           <h2 class="c6"><%=@offer.name%></h2>
+      </div>
   </div>
+</div>
+
+
 <div class="wrapper" style="margin:4vw;">
 <div class="card">
 <div class="card-body">
