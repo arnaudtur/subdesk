@@ -29,11 +29,11 @@
   <% if current_user == booking.user %>
   <div class="bodycard">
     <div class="card-content">
-    <div class="card-product justify-content-left">
+      <div class="card-product justify-content-left">
         <%= cl_image_tag booking.offer.user.photo.key, class:"border border-primary"  %>
         <div class="card-product-infos">
           <div class="d-flex justify-content-between">
-            <span class="badge badge-pill badge-secondary p-2">Landlord</span>
+            <span class="badge badge-pill badge-secondary p-2">Propriétaire</span>
             <span class="badge badge-pill badge-dark justify-content-right p-2"><%= booking.status %></span>
           </div>
           <h2><%= booking.offer.name %></h2>
@@ -59,13 +59,16 @@
       <%= link_to "Discussion", chatroom_path(booking.chatroom.id), method: :get, class: "btn btn-info btn-sm" %><br>
       <%= link_to "Annuler", booking_cancel_path(booking), method: :get, class: "btn btn-secondary btn-sm" %><br>
     <% else %>
-    </div>
     <% end%>
     </div>
+  </div>
+
+
 
 
     <br>
     <br>
+
 
     <% elsif current_user == booking.offer.user %>
     <div class="bodycard">
@@ -77,7 +80,7 @@
           <span class="badge badge-pill badge-dark p-2">Locataire</span>
           <span class="badge badge-pill badge-dark justify-content-right p-2"><%= booking.status %></span>
         </div>
-        <h2><%= booking.offer.name %></h2>
+        <h2><%= booking.user.name %></h2>
         <p>Entreprise: <strong><%= booking.user.name %></strong></p>
         <span class="badge badge-pill <%= matching_color(booking.offer.matching_r(booking.user)) %>"> Matching <%= booking.offer.matching_r(booking.user) %>%</span>
       </div>
@@ -111,7 +114,6 @@
   <% end %>
 
 <% end%>
-</div>
 </div>
 
 
