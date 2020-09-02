@@ -1,12 +1,11 @@
-<div style="padding-top:90px;">
+<div style="padding-top:90px;"></div>
 
 <div class="card col-6 mx-auto", style="padding: 10px; margin-top: 50px; border-radius:8%;">
-  <div style="text-align:center;">
-    <h2>Inscription</h2>
-  </div>
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
-      <div class="form-inputs card-body">
+<div style="text-align:center;">
+<h2>Inscription</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="form-inputs card-body">
         <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -20,14 +19,13 @@
                 input_html: { autocomplete: "new-password" } %>
         <%= f.input :photo, as: :file %>
       </div>
+  <div class="form-actions">
+      <%= f.button :submit, "S'inscrire'", class:"btn btn-outline-primary" %>
+  </div>
+  <%= render "devise/shared/links" %>
+<% end %>
 
-    <div style="text-align:center;">
-    <div class="form-actions">
-      <%= f.button :submit, "Souscrire", class:"btn btn-outline-primary" %>
-    </div>
-    </div>
-
-  <% end %>
    </div>
 </div>
+
 
