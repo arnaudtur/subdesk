@@ -1,87 +1,145 @@
 <div style="padding-top:90px;">
-<h3 class="mx-2 mt-2 border-bottom"><strong>Informations Entreprise</strong></h3>
+
+<ul class="nav nav-pills mb-3 mt-5 justify-content-center" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Modifier mon profil</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Modifier mes critères</a>
+  </li>
+</ul>
+
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active bg-white" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <div class="card col-6 mx-auto", style="padding: 10px; margin-top: 50px; border-radius:8%;">
+    <div style="text-align:center;">
+    <h3 class="mx-2 mt-5 border-bottom"><strong>Informations</strong></h3>
+      <%= simple_form_for @user, url: user_path(@user), method: :put do |f| %>
+        <%= f.error_notification %>
+          <div class="form-inputs">
+            <div class="second row m-4">
+              <div class="col-md-6 p-4", style="color:black; text-align:left;">
+              <%= f.input :name, label: "Nom de l'entreprise",
+                          required: true,
+                          input_html: { autocomplete: "name" } %>
+              <%= f.input :hq_address, label: "Adresse de l'entreprise",
+                          required: true,
+                          input_html: { autocomplete: "hq_address" } %>
+              <%= f.input :number_of_employees, label: "Nombre de collaborateurs",
+                          required: true,
+                          input_html: { autocomplete: "number_of_employees" } %>
+
+              <%= f.input :weblink, label: "Lien du site internet de l'entreprise",
+                          required: true,
+                          input_html: { autocomplete: "weblink" } %>
+              <%= f.input :photo, as: :file %>
+              </div>
+
+              <div class="col-md-6 p-4", style="color:black; text-align:left;">
+              <%= f.input :field, label: "Secteur",
+                          required: true,
+                          input_html: { autocomplete: "field" } %>
+              <%= f.input :year_of_creation, label: "Année de création",
+                          required: true,
+                          input_html: { autocomplete: "year_of_creation" } %>
+
+              <%= f.input :average_age, label: "L'âge moyen des collaborateurs",
+                          required: true,
+                          input_html: { autocomplete: "average_age" } %>
+
+
+              <%= f.input :description, label: "Description",
+                          required: true,
+                          input_html: { autocomplete: "description" } %>
+              </div>
+            </div>
+
+            <div class="row form-actions justify-content-center mt-5">
+              <%= f.button :submit, "Update", class: "btn-success" %>
+            </div>
+          </div>
+      <% end %>
+  </div>
+  </div>
+  </div>
+
+<div class="tab-pane fade bg-white" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+<div class="card col-6 mx-auto", style="padding: 10px; margin-top: 50px; border-radius:8%;">
+<div style="text-align:center;">
+<h2>Critères</h2>
+
 <%= simple_form_for @user, url: user_path(@user), method: :put do |f| %>
+  <div class="form-inputs" style="text-align: left;">
   <%= f.error_notification %>
-<div class="form-inputs">
-  <div class="second row m-4">
-    <div class="col-md-6 p-4">
-    <%= f.input :name, label: "Nom de l'entreprise",
-                required: true,
-                input_html: { autocomplete: "name" } %>
-    <%= f.input :hq_address, label: "Adresse de l'entreprise",
-                required: true,
-                input_html: { autocomplete: "hq_address" } %>
-    <%= f.input :number_of_employees, label: "Nombre de collaborateurs",
-                required: true,
-                input_html: { autocomplete: "number_of_employees" } %>
-
-    <%= f.input :weblink, label: "Lien du site internet de l'entreprise",
-                required: true,
-                input_html: { autocomplete: "weblink" } %>
-    <%= f.input :photo, as: :file %>
-    </div>
-
-    <div class="col-md-6 p-4">
-    <%= f.input :field, label: "Secteur",
-                required: true,
-                input_html: { autocomplete: "field" } %>
-    <%= f.input :year_of_creation, label: "Année de création",
-                required: true,
-                input_html: { autocomplete: "year_of_creation" } %>
-
-    <%= f.input :average_age, label: "L'âge moyen des collaborateurs",
-                required: true,
-                input_html: { autocomplete: "average_age" } %>
-
-
-    <%= f.input :description, label: "Description",
-                required: true,
-                input_html: { autocomplete: "description" } %>
-    </div>
+            <%= f.input :criteria1, label: "À quel niveau estimez-vous le bruit de votre équipe?",
+                        required: false,
+                        as: :select,
+                        include_blank: false,
+                        collection: [["Faible", 1], ["Modéré", 2], ["Standard", 3], ["Au-dessus de la moyenne", 4]]
+                         %>
+            <%= f.input :criteria2, label: "À quelle fréquence faites vous des afterworks?",
+                        required: false,
+                        as: :select,
+                        include_blank: false,
+                        collection: [["Faible", 1], ["Modéré", 2], ["Standard", 3], ["Au-dessus de la moyenne", 4]]
+                         %>
+            <%= f.input :criteria3, label: "À quel point la vie professionelle s'immisce dans la vie privée de vos employés? ",
+                        required: false,
+                        as: :select,
+                        include_blank: false,
+                        collection: [["Faible", 1], ["Modéré", 2], ["Standard", 3], ["Au-dessus de la moyenne", 4]]
+                         %>
+            <%= f.input :criteria4, label: "À quel point vos espaces de travaille sont personalisés",
+                        required: false,
+                        as: :select,
+                        include_blank: false,
+                        collection: [["Faible", 1], ["Modéré", 2], ["Standard", 3], ["Au-dessus de la moyenne", 4]]
+                         %>
+            <%= f.input :criteria5, label: "À quelle fréquence recevez-vous de la visite dans vos locaux?",
+                        required: false,
+                        as: :select,
+                        include_blank: false,
+                        collection: [["Faible", 1], ["Modéré", 2], ["Standard", 3], ["Au-dessus de la moyenne", 4]]
+                         %>
+            <%= f.input :criteria6, label: "À quel point est-il important pour vous de pouvoir partagez vos 'Best-practices' avec vos partenaires de bureaux?",
+                        required: false,
+                        as: :select,
+                        include_blank: false,
+                        collection: [["Faible", 1], ["Modéré", 2], ["Standard", 3], ["Au-dessus de la moyenne", 4]]
+                         %>
+            <%= f.input :criteria7, label: "À quelle fréquence votre entreprise organise-t-elle des activités extras professionnelles?",
+                        required: false,
+                        as: :select,
+                        include_blank: false,
+                        collection: [["Faible", 1], ["Modéré", 2], ["Standard", 3], ["Au-dessus de la moyenne", 4]]
+                         %>
+            <%= f.input :criteria8, label: "À quel point le bien-être de vos employés est important?",
+                        required: false,
+                        as: :select,
+                        include_blank: false,
+                        collection: [["Faible", 1], ["Modéré", 2], ["Standard", 3], ["Au-dessus de la moyenne", 4]]
+                         %>
+            <%= f.input :criteria9, label: "À quel point votre entreprise est 'data-driven'?",
+                        required: false,
+                        as: :select,
+                        include_blank: false,
+                        collection: [["Faible", 1], ["Modéré", 2], ["Standard", 3], ["Au-dessus de la moyenne", 4]]
+                         %>
+            <%= f.input :criteria10, label: "À quel point votre entreprise est pour le 'flex-office'?",
+                        required: false,
+                        as: :select,
+                        include_blank: false,
+                        collection: [["Faible", 1], ["Modéré", 2], ["Standard", 3], ["Au-dessus de la moyenne", 4]]
+                         %>
+            </div>
   </div>
-
-<h3 class="mx-2 mt-2 border-bottom"><strong>Formulaire Critères</strong></h3>
-
-    <div class="row m-4 justify-content-center mb-5 border-bottom">
-    <div class="third col-md-4 p-4 mb-5">
-    <%= f.input :criteria1, label: "Sur une échelle de 1 à 4, a quel niveau estimez-vous le bruit de votre équipe?",
-                required: true,
-                input_html: { autocomplete: "criteria1" } %>
-    <%= f.input :criteria2, label: "Sur une échelle de 1 à 4, à quelle fréquence faites vous des afterworks?",
-                required: true,
-                input_html: { autocomplete: "criteria2" } %>
-    <%= f.input :criteria3, label: "Sur une échelle de 1 à 4, à quel point la vie professionelle s'immisce dans la vie privée de vos employés? ",
-                required: true,
-                input_html: { autocomplete: "criteria3" } %>
-    <%= f.input :criteria4, label: "Sur une échelle de 1 à 4, à quel point vos espaces de travaille sont personalisés",
-                required: true,
-                input_html: { autocomplete: "criteria4" } %>
-    <%= f.input :criteria5, label: "Sur une échelle de 1 à 4, à quelle fréquence recevez-vous de la visite dans vos locaux?",
-                required: true,
-                input_html: { autocomplete: "criteria5" } %>
-    <%= f.input :criteria6, label: "Sur une échelle de 1 à 4, à quel point est-il important pour vous de pouvoir partagez vos 'Best-practices' avec vos partenaires de bureaux?",
-                required: true,
-                input_html: { autocomplete: "criteria6" } %>
-    <%= f.input :criteria7, label: "Sur une échelle de 1 à 4, à quelle fréquence votre entreprise organise-t-elle des activités extras professionnelles?",
-                required: true,
-                input_html: { autocomplete: "criteria7" } %>
-    <%= f.input :criteria8, label: "Sur une échelle de 1 à 4, à quel point le bien-être de vos employés est important?",
-                required: true,
-                input_html: { autocomplete: "criteria8" } %>
-    <%= f.input :criteria9, label: "Sur une échelle de 1 à 4, à quel point votre entreprise est 'data-driven'?",
-                required: true,
-                input_html: { autocomplete: "criteria9" } %>
-    <%= f.input :criteria10, label: "Sur une échelle de 1 à 4, à quel point votre entreprise est pour le 'flex-office'?",
-                required: true,
-                input_html: { autocomplete: "criteria10" } %>
-    </div>
-    </div>
-
+            <div class="row form-actions justify-content-center mt-5">
+              <%= f.button :submit, "Update", class: "btn-success" %>
+            </div>
+<% end %>
   </div>
-
-  <div class="row form-actions justify-content-center mt-5">
-    <%= f.button :submit, "Update", class: "btn-success" %>
-  </div>
-  </div>
-  <% end %>
-
+</div>
+</div>
+</div>
+</div>
