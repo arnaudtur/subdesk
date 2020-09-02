@@ -76,13 +76,13 @@
 </g>
 </g>
 </svg>
-  <p>Status of the booking: <strong><%= @chatroom.booking.status %></strong></p>
+  <p>Status de la réservation: <strong><%= @chatroom.booking.status %></strong></p>
   <%= link_to "Accepter ", booking_accepter_path(@chatroom.booking), class: "btn btn-primary btn-sm" %><br>
   <%= link_to "Refuser", booking_refused_path(@chatroom.booking), class: "btn btn-secondary btn-sm" %><br>
 <% else %>
   <div class="d-flex" style="justify-content:space-between;">
   <h1><%= @chatroom.booking.user.name%></h1>
-  <%= cl_image_tag @chatroom.booking.user.photo.key, class:"avatar", style:"border:1px solid;"%>
+  <%= cl_image_tag @chatroom.booking.offer.user.photo.key, class:"avatar", style:"border:1px solid;"%>
   </div>
   <svg width="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="study">
@@ -107,9 +107,10 @@
 
 </g>
 </svg>
-  <p>Status of the booking: <strong><%= @chatroom.booking.status %></strong></p>
-  <p>Seats available: <strong><%= @chatroom.booking.offer.seats %></strong></p>
-  <p>Price per seat: <strong><%= @chatroom.booking.offer.price %></strong></p>
+   <div class="sticky", style="position: -webkit-sticky; position: sticky; top: 20px;">
+  <p>Status de la réservation: <strong><%= @chatroom.booking.status %></strong></p>
+  <p>Sièges disponibles: <strong><%= @chatroom.booking.offer.seats %></strong></p>
+  <p>prix par siège: <strong><%= @chatroom.booking.offer.price %></strong></p>
   <%= link_to "Annuler", booking_cancel_path(@chatroom.booking), class: "btn btn-secondary btn-sm" %><br>
 <%end%>
 
