@@ -20,13 +20,14 @@
           <div class="d-flex flex-row-reverse">
             <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle m-2", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="color:white;">
-              <%= link_to 'Profil', user_path(current_user), class:"nav-link", style:"color:white;"%>
+              
+              <%= link_to 'Profil', user_path(current_user), class:"nav-link", style:"color:white;", data:{ turbolinks: false }%>
 
-              <%= link_to 'Modifier mes informations',  edit_user_path(current_user), class:"nav-link", style:"color:white;" %>
+              <%= link_to 'Modifier mes informations',  edit_user_path(current_user), class:"nav-link", style:"color:white;", data:{ turbolinks: false } %>
 
-              <%= link_to 'Paramètres',  edit_user_registration_path(current_user), class:"nav-link", style:"color:white;" %>
+              <%= link_to 'Paramètres',  edit_user_registration_path(current_user), class:"nav-link", style:"color:white;", data:{ turbolinks: false } %>
 
-              <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class:"nav-link",style:"color:white;" %>
+              <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class:"nav-link",style:"color:white;", data:{ turbolinks: false } %>
             </div>
           </div>
         </li>
