@@ -32,13 +32,13 @@
 </div>
 <br><br><br><br>
 <div class="fixed-bottom mx-5">
-  <div class="card-product" style="height:60px; width:90vw;">
+  <div class="card-product" style="height:60px; width:80vw; margin-left: auto; margin-right: auto;">
     <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
     <div class="d-flex justify-content-space-between">
     <%if current_user.id == @chatroom.booking.offer.user.id%>
-        <div class="pl-4 pt-2", style="width:70vw;"><%= f.input :content, label: false, placeholder: "Envoyez un message a votre futur locataire!" %></div>
+        <div class="pl-4 pt-2", style="width:63vw;"><%= f.input :content, label: false, placeholder: "Envoyez un message a votre futur locataire!" %></div>
     <%else%>
-        <div class="pl-4 pt-2", style="width:70vw;"><%= f.input :content, label: false, placeholder: "Envoyez un message a votre futur loueur!" %></div>
+        <div class="pl-4 pt-2", style="width:63vw;"><%= f.input :content, label: false, placeholder: "Envoyez un message a votre futur loueur!" %></div>
     <%end%>
         <div class="ml-4 pt-2", style="width:15vw;"><%= f.button :submit, class:"btn btn-outline-primary"%></div>
       </div>
