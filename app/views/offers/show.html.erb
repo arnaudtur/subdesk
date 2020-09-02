@@ -5,7 +5,7 @@
 
     </div>
   </div>
-<div class="container justify-content-center mt-3">
+<div class="wrapper" style="margin:4vw;">
 <div class="card">
 <div class="card-body">
 
@@ -18,7 +18,8 @@
     <p><%=@offer.seats%> siège disponibles</p>
     <p><%=@offer.price%> €/poste</p>
     <%if @offer.user != current_user%>
-    <%= link_to "J'emménage", new_offer_booking_path(params[:id]), class:"btn btn-outline-primary" %>
+    <%= link_to "J'emménage", new_offer_booking_path(params[:id]), class:"btn btn-subdesk" %>
+    <%= link_to "Profil", user_path(@offer.user_id), class:"btn btn-subdesk", style:"margin-top:15px;" %>
     <%end%>
     </div>
     </div>
