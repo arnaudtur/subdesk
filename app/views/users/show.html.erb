@@ -32,11 +32,11 @@
 
 <!-- Profil -->
 
-      <div class="tab-pane fade show active bg-white" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <div class="row justify-content-between p-5">
           <div class="col-md-4">
             <div class="al-img-block d-flex align-items-center h-100 ml-5">
-              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" height="100%" width="100%" style="object-fit: cover;">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" height="100%" width="100%" style="object-fit: cover; border-radius: 7px;">
             </div>
           </div>
 
@@ -57,7 +57,7 @@
           </div>
           <div class="col-md-4">
             <div class="al-txt-block text-justify mr-5">
-              <h2>QUI <strong>SOMMES-NOUS</strong> ?</h2>
+              <h2 class="colored-title text-justify-left mx-0">QUI <strong>SOMMES-NOUS</strong> ?</h2>
               <br>
               <p class="al-txt-block text-justify"><%=@user.description%></p>
             </div>
@@ -72,8 +72,8 @@
 
       <div class="tab-pane fade bg-white" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <div class="mt-5">
-          <%= link_to 'Nouvelle Annonce',  new_offer_path, class: "btn btn-subdesk-sec"%>
-          <div class="m-5" style="border-bottom: 1px solid black;">
+          <%= link_to '➕ Annonce',  new_offer_path, class: "btn btn-subdesk-sec"%>
+          <div class="mx-5" style="border-bottom: 1px solid #3f3f44;">
             <h4 class="text-align-left pt-3 pl-5">
                     <% cards_count = 0 %>
                     <% Offer.all.each do |offer| %>
@@ -90,26 +90,26 @@
             </h4>
           </div>
         </div>
-        <div class="d-flex mt-5">
+        <div class=" d-flex mt-5">
           <div class="cardprofile container align-items-center justify-content-center col-8">
             <%Offer.all.each do |offer|%>
             <% if offer.user ==  @user%>
               <%= link_to offer_path(offer.id) do%>
               <div class="card-product ml-5">
                 <% offer.photos.each do |photo| %>
-                  <%= cl_image_tag photo.key,crop: "fill", class:"imagecard", style:"border-radius: 10px;"%>
+                  <%= cl_image_tag photo.key,crop: "fill", class:"imagecard", style:"border-radius: 7px;width: 45%;"%>
                 <%end%>
                 <div class="card-body">
-                    <h4 class="font-weight-bold mb-2"><%= offer.name%></h4>
+                    <h4 class="font-weight-bold mb-2" style="font-size: 32px;"><%= offer.name%></h4>
                     <br>
-                    <p><i class="fas fa-male"></i> <%=offer.seats%></p>
+                    <p style="font-size: 22px;"><i class="fas fa-male" style="font-size: 30px;"></i> <%=offer.seats%></p>
                     <br>
 
-                    <p><%=offer.address%></p>
+                    <p style="font-size: 18px;"><%=offer.address%></p>
                     <div class="float-right">
                         <span class="price">
-                            <span class="currency"><%= offer.price%>€</span>
-                            <span class="month">/MOIS</span>
+                            <span class="currency"><strong><%= offer.price%>€</strong></span>
+                            <span class="month" style="font-size: 15px">/MOIS</span>
                         </span>
                     </div>
                 </div>
@@ -119,10 +119,12 @@
             <%end%>
           <%end%>
           <%end%>
+          <div class="container align-items-center justify-content-center mb-5" style="width: 250vh;">
           <div id="map" class="map1 col-4"
-               style="width: 90%; height: 100vh;"
+               style="width: 250vh; height: 30vh;"
                data-markers="<%= @markers.to_json %>"
                data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
           </div>
 
       </div>
