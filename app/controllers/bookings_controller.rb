@@ -6,6 +6,17 @@ class BookingsController < ApplicationController
     @bookings = @bookings.where(status:params[:status])
   end
 
+  def show
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "contract.pdf",
+              template: "bookings/contract"
+      end
+    end
+  end
 
   def new
     @offer = Offer.find(params[:offer_id])

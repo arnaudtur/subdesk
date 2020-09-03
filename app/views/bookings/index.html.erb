@@ -67,9 +67,13 @@
             <%= link_to ('<i class="far fa-comment-dots"></i>').html_safe, booking_accepter_discuss_path(booking), class: "btn-booking circle_purple" %>
             <%= link_to ('<i class="fas fa-times"></i>').html_safe, booking_refused_path(booking), class: "btn-booking circle_red" %>
           <% elsif booking.status == "Discussion"   %>
+
             <%= link_to ('<i class="far fa-comment-dots"></i>').html_safe, chatroom_path(booking.chatroom.id), method: :get, class: "btn-booking circle_purple" %>
             <%= link_to ('<i class="fas fa-check"></i>').html_safe, booking_accepter_path(booking), class: "btn-booking circle_green" %>
             <%= link_to ('<i class="fas fa-times"></i>').html_safe, booking_refused_path(booking), class: "btn-booking circle_red" %>
+            <% elsif booking.status == "Acceptée"   %>
+            <%= link_to ('<i class="far fa-comment-dots"></i>').html_safe, chatroom_path(booking.chatroom.id), method: :get, class: "btn-booking circle_purple" %>
+            <%= link_to ('<i class="fas fa-file-contract"></i>').html_safe, booking_path(booking, format: :pdf) , target:'_blank',:format => :pdf, method: :get, class: "btn-booking circle_blue" %>
           <% else%>
           <% end%>
         <% else%>

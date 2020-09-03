@@ -8,6 +8,10 @@ class BookingPolicy < ApplicationPolicy
   def index
   end
 
+  def show?
+    true
+  end
+
   def create?
     true
   end

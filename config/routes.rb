@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :offers, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resources :bookings, only: [:new, :create, :edit, :update]
     end
-    resources :bookings, only: [:index] do
+    resources :bookings, only: [:index, :show] do
       get "accepter_booking", to: "bookings#accepter_booking", as: "accepter"
       get "accepter_discuss_booking", to: "bookings#accepter_discuss_booking", as: "accepter_discuss"
       get "cancel_booking", to: "bookings#cancel_booking", as: "cancel"
