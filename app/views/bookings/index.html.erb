@@ -59,7 +59,7 @@
           <span class="matching-text"><%= booking.offer.matching_r(booking.user) %></span>%
         </div>
         <div class="card-booking-status">
-          <span class="badge badge-pill   p-2"><%= booking.status %></span>
+          <span class="badge badge-pill badge-light p-3 font-italic"><%= booking.status %></span>
         </div>
         <div class="btn-part-booking">
         <% if current_user == booking.offer.user %>
@@ -82,6 +82,9 @@
           <% elsif booking.status == "Discussion"   %>
             <%= link_to ('<i class="far fa-comment-dots"></i>').html_safe, chatroom_path(booking.chatroom.id), method: :get, class: "btn-booking circle_purple" %>
             <%= link_to ('<i class="fas fa-times"></i>').html_safe, booking_cancel_path(booking), method: :get, class: "btn-booking circle_red" %>
+          <% elsif booking.status == "Acceptée"   %>
+            <%= link_to ('<i class="far fa-comment-dots"></i>').html_safe, chatroom_path(booking.chatroom.id), method: :get, class: "btn-booking circle_purple" %>
+            <%= link_to ('<i class="fas fa-file-contract"></i>').html_safe, booking_path(booking, format: :pdf) , target:'_blank',:format => :pdf, method: :get, class: "btn-booking circle_blue" %>
           <% else%>
           <% end%>
         <% end%>
