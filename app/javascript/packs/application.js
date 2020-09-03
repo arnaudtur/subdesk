@@ -37,6 +37,7 @@ document.addEventListener('turbolinks:load', () => {
 });
 import { initMapbox } from '../plugins/init_mapbox';
 
+const newLocal = this;
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initChatroomCable();

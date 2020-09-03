@@ -16,6 +16,34 @@
           </div>
         </li>
       <% elsif user_signed_in? %>
+        <li class="nav-item btn-group" data-behavior="notifications">
+          <a class="dropdown-toggle nav-link" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="">
+            <%@notifications = Notification.all.where(recipient: current_user).where(read_at: nil)%>
+            <%if @notifications.length > 0%>
+            <i class="fas fa-bell fa-lg" style="color:red;"></i><span>
+            <%if @notifications.length == 1%>
+              <%= "#{@notifications.length}"%><i class="fas fa-envelope" style="padding-left:5px;"></i>
+            <%else%>
+              <%= "#{@notifications.length}"%><i class="fas fa-envelope" style="padding-left:5px;"></i>
+            <%end%>
+            </span>
+            <%@notificationsuni = @notifications.uniq { |notif| notif.actor}%>
+            <div class="dropdown-menu" data-behavior="notification-items" style="margin-top:12px;">              
+              <% @notificationsuni.each do |notif|%>
+                <%if @notifications.select(notif.actor_id).select(notif.recipient_id).length == 1 %>
+                  <%= link_to "nouveau message de #{notif.notifiable_type} #{notif.actor.name}", chatroom_path(notif.notifiable.chatroom), class:"dropdown-item", style:"color:#878cff; font-weight:bold;", id:"notif"%>            
+                <%else%>
+                  <%= link_to "nouveaux messages de #{notif.notifiable_type} #{notif.actor.name}", chatroom_path(notif.notifiable.chatroom), class:"dropdown-item", style:"background-color:#878cff;", id:"notif"%>
+                <%end%>
+              <%end%>
+            <%elsif%>
+            <i class="fas fa-bell"></i>
+            <div class="dropdown-menu" data-behavior="notification-items" style="margin-top:12px;">              
+            <a class="dropdown-item" href="#">Pas de nouveau message</a>
+            <%end%>
+            </div>
+          </a>
+        </li>
         <%= link_to "Je trouve mes bureaux",  offers_path, class: "btn btn-subdesk-sec"%>
         <%= link_to "Mes réservations",  bookings_path, class: "resa"%>
         <li class="nav-item dropdown imgnav">
@@ -34,6 +62,6 @@
           <%= link_to "Connexion", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
-    </ul>
-  </div>
+
+    </ul>  </div>
 </div>
