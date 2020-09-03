@@ -14,19 +14,19 @@
 
   <div class="row d-flex">
     <div class="col-3">
-    <div class="card" style="width: 16rem; padding: 16px; border-radius: 10px;position: -webkit-sticky; position: sticky; top: 20px; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);">
+    <div class="card" style="width: 100%; padding: 16px; border-radius: 10px;position: -webkit-sticky; position: sticky; top: 20px; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);">
     <h4 class="mx-auto"><strong><%=@offer.user.name%></strong></h4>
     <%= link_to user_path(@offer.user_id) do %>
     <%= cl_image_tag @offer.user.photo.key, class:"img-thumbnail"%>
     <%end%>
     <div style="text-align:left; font-size:14px;">
     <br>
-    <p><%=@offer.address%> <i class="fas fa-map-marker"></i></p>
-    <p><%=@offer.seats%> <i class="fas fa-male"></i></p>
+    <p><i class="fas fa-map-marker"></i> <%=@offer.address%> </p>
+    <p><i class="fas fa-male"></i> <%=@offer.seats%> </p>
     <p><%=@offer.price%> <i class="fas fa-euro-sign"></i> / <i class="fas fa-male"></i></p>
     </div>
     <%if @offer.user != current_user%>
-    <%= link_to "J'emménage", new_offer_booking_path(params[:id]), class:"btn btn-subdesk" %>
+    <%= link_to "Je candidate", new_offer_booking_path(params[:id]), class:"btn btn-subdesk" %>
     <%else%>
     <%= link_to 'Modifier votre offre', edit_offer_path, class:"btn btn-subdesk"%>
     <%= button_to "Supprimer l'offre", {:controller => :offers,
@@ -35,9 +35,9 @@
     <%end%>
     </div>
     </div>
-    <div class="col-6">
+    <div class="col-6 px-5">
       <div class="text-left">
-        <h2 style="text-decoration:underline;">Description</h2>
+        <h2 style="font-weight: bolder;">Description</h2>
         <br>
         <%length = @offer.description.split.length%>
         <% x = @offer.description.split[(0..length/2)].join(" ")%>
