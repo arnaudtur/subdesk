@@ -24,24 +24,70 @@
 <br>
 
 <div class="container-booking">
+<ul class="list-inline tabs-underlined justify-content-center" >
+  <li id="field">Entreprise
+  </li>
+  <li id="field">Matching
+  </li>
+  <li id="field">Statut
+  </li>
+  <li id="field">Action
+  </li>
+</ul>
+
+
 <% @bookings.each do |booking| %>
 
-  <% if current_user == booking.user %>
-  <div class="bodycard">
-    <div class="card-content">
-      <div class="card-product justify-content-left">
-        <%= cl_image_tag booking.offer.user.photo.key, class:"border border-primary"  %>
-        <div class="card-product-infos">
-          <div class="d-flex justify-content-between">
-            <span class="badge badge-pill badge-secondary p-2">Propriétaire</span>
-            <span class="badge badge-pill badge-dark justify-content-right p-2"><%= booking.status %></span>
-          </div>
-          <h2><%= booking.offer.name %></h2>
-          <p>Entreprise : <strong><%= booking.offer.user.name %></strong></p>
-          <span class="badge badge-pill <%= matching_color(booking.offer.matching_r(@user_logged)) %>"> Matching <%= booking.offer.matching_r(@user_logged) %>%</span>
+      <div class="card-content">
+        <div class="card-product">
+        <div class="image-name-card">
+          <% if current_user == booking.offer.user %>
+            <%= cl_image_tag booking.user.photo.key, class:"border border-primary"  %>
+            <br>
+            <span id="Name"><%= booking.user.name %></span>
+            <br>
+            <span class="Locataire-Landlord">Locataire</span>
+          <% else %>
+            <%= cl_image_tag booking.offer.user.photo.key, class:"border border-primary"  %>
+            <br>
+            <span id="Name"><%= booking.offer.user.name %></span>
+            <br>
+            <span class="Locataire-Landlord">Propriétaire</span>
+          <% end %>
+        </div>
+        <div class="matching-range">
+          <span class="matching-text"><%= booking.offer.matching_r(booking.user) %></span>%
+        </div>
+        <div class="card-booking-status">
+          <span class="badge badge-pill   p-2"><%= booking.status %></span>
+        </div>
+        <div class="btn-part-booking">
+        <% if current_user == booking.offer.user %>
+          <% if booking.status == "En Attente" %>
+            <%= link_to ('<i class="far fa-comment-dots"></i>').html_safe, booking_accepter_discuss_path(booking), class: "btn-booking circle" %>
+            <%= link_to ('<i class="fas fa-times"></i>').html_safe, booking_refused_path(booking), class: "btn-booking circle" %>
+          <% elsif booking.status == "Discussion"   %>
+            <%= link_to ('<i class="far fa-comment-dots"></i>').html_safe, chatroom_path(booking.chatroom.id), method: :get, class: "btn-booking circle" %>
+            <%= link_to ('<i class="fas fa-check"></i>').html_safe, booking_accepter_path(booking), class: "btn-booking circle" %>
+            <%= link_to ('<i class="fas fa-times"></i>').html_safe, booking_refused_path(booking), class: "btn-booking circle" %>
+          <% else%>
+          <% end%>
+        <% else%>
+          <% if booking.status == "En Attente" %>
+            <%= link_to ('<i class="fas fa-times"></i>').html_safe, booking_cancel_path(booking), method: :get, class: "btn-booking circle" %>
+          <% elsif booking.status == "Discussion"   %>
+            <%= link_to ('<i class="far fa-comment-dots"></i>').html_safe, chatroom_path(booking.chatroom.id), method: :get, class: "btn-booking circle" %>
+            <%= link_to ('<i class="fas fa-times"></i>').html_safe, booking_cancel_path(booking), method: :get, class: "btn-booking circle" %>
+          <% else%>
+          <% end%>
+        <% end%>
         </div>
       </div>
-      <button class="collapsible">Réponses aux questions</button>
+      <% if current_user == booking.offer.user %>
+        <button class="collapsible">Réponses à vos questions  <i class="fas fa-long-arrow-alt-down"></i></button>
+      <% else %>
+        <button class="collapsible">Vos réponses aux questions  <i class="fas fa-long-arrow-alt-down"></i></button>
+        <% end %>
       <div class="content">
         <h5><%= booking.offer.question1 %></h5>
         <em><%= booking.answer1 %></em>
@@ -51,69 +97,10 @@
         <em><%= booking.answer3 %></em>
       </div>
     </div>
-
-    <div class="btn-part">
-    <% if booking.status == "En Attente" %>
-      <%= link_to "Annuler", booking_cancel_path(booking), method: :get, class: "btn btn-secondary btn-sm" %><br>
-    <% elsif booking.status == "Discussion"   %>
-      <%= link_to "Discussion", chatroom_path(booking.chatroom.id), method: :get, class: "btn btn-info btn-sm" %><br>
-      <%= link_to "Annuler", booking_cancel_path(booking), method: :get, class: "btn btn-secondary btn-sm" %><br>
-    <% else %>
-    <% end%>
-    </div>
-  </div>
-
-
-
-
     <br>
-    <br>
-
-
-    <% elsif current_user == booking.offer.user %>
-    <div class="bodycard">
-      <div class="card-content">
-    <div class="card-product justify-content-left">
-      <%= cl_image_tag booking.user.photo.key, class:"border border-primary"  %>
-      <div class="card-product-infos">
-        <div class="d-flex justify-content-between">
-          <span class="badge badge-pill badge-dark p-2">Locataire</span>
-          <span class="badge badge-pill badge-dark justify-content-right p-2"><%= booking.status %></span>
-        </div>
-        <h2><%= booking.user.name %></h2>
-        <p>Entreprise: <strong><%= booking.user.name %></strong></p>
-        <span class="badge badge-pill <%= matching_color(booking.offer.matching_r(booking.user)) %>"> Matching <%= booking.offer.matching_r(booking.user) %>%</span>
-      </div>
-    </div>
-    <button class="collapsible">Réponses aux questions</button>
-    <div class="content">
-        <h5><%= booking.offer.question1 %></h5>
-        <em><%= booking.answer1 %></em>
-        <h5><%= booking.offer.question2 %></h5>
-        <em><%= booking.answer2 %></em>
-        <h5><%= booking.offer.question3 %></h5>
-        <em><%= booking.answer3 %></em>
-      </div>
-      </div>
-    <br>
-    <div class="btn-part">
-    <% if booking.status == "En Attente" %>
-      <%= link_to "Lancer la discussion", booking_accepter_discuss_path(booking), class: "btn btn-primary btn-sm" %><br>
-      <%= link_to "Refuser", booking_refused_path(booking), class: "btn btn-secondary btn-sm" %><br>
-    <% elsif booking.status == "Discussion"   %>
-      <%= link_to "Discussion", chatroom_path(booking.chatroom.id), method: :get, class: "btn btn-info btn-sm" %><br>
-      <%= link_to "Accepter ", booking_accepter_path(booking), class: "btn btn-primary btn-sm" %><br>
-      <%= link_to "Refuser", booking_refused_path(booking), class: "btn btn-secondary btn-sm" %><br>
-    <% else%>
-    <% end%>
-    </div>
-    </div>
-
     <br>
     <br>
   <% end %>
-
-<% end%>
 </div>
 
 
