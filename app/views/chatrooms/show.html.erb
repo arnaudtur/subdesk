@@ -81,8 +81,8 @@
   <%= link_to "Refuser", booking_refused_path(@chatroom.booking), class: "btn btn-secondary btn-sm" %><br>
 <% else %>
   <div class="d-flex" style="justify-content:space-between;">
-  <h1><%= @chatroom.booking.user.name%></h1>
-  <%= cl_image_tag @chatroom.booking.user.photo.key, class:"avatar", style:"border:1px solid;"%>
+  <h1><%= @chatroom.booking.offer.user.name%></h1>
+  <%= cl_image_tag @chatroom.booking.offer.user.photo.key, class:"avatar", style:"border:1px solid;"%>
   </div>
   <svg width="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="study">
