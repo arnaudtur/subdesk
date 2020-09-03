@@ -27,7 +27,47 @@
       <%end%>
         </div>
       <% end %>
+<div class="container justify-content-center" style="position:relative;">
+<div class="card"  style="border-radius:8px; border:1px solid; min-height:80vh;text-align: left;">
+<div class="card-body">
 
+<div class="row">
+<div class="col-8", style="padding-right:15px;">
+<h1><%= @chatroom.name %></h1>
+<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+  <% @chatroom.messages.each do |message| %>
+    <div class="message-container" id="message-<%= message.id %>">
+  <%if current_user.id != message.user.id%>
+    <div style="text-decoration: underline;">
+    <small style="font-weight:bold;">
+    <span><%= "#{message.user.name}, le" %></span>
+    <%= message.created_at.strftime("%d/%m/%y à %H:%M :") %>
+    </small>
+    </div>
+    <p><%= message.content %></p>
+  <%else%>
+    <div style="text-decoration: underline;">
+    <small style="font-weight:bold;">
+    <span><%= "Vous, le" %></span>
+    <%= message.created_at.strftime("%d/%m/%y à %H:%M :") %>
+    </small>
+    </div>
+    <p><%= message.content %></p>
+  <%end%>
+    </div>
+  <% end %>
+</div>
+<br><br><br><br>
+<div class="fixed-bottom mx-5">
+  <div class="card-product" style="height:60px; width:80vw; margin-left: auto; margin-right: auto;">
+    <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+    <div class="d-flex justify-content-space-between">
+    <%if current_user.id == @chatroom.booking.offer.user.id%>
+        <div class="pl-4 pt-2", style="width:63vw;"><%= f.input :content, label: false, placeholder: "Envoyez un message a votre futur locataire!" %></div>
+    <%else%>
+        <div class="pl-4 pt-2", style="width:63vw;"><%= f.input :content, label: false, placeholder: "Envoyez un message a votre futur loueur!" %></div>
+    <%end%>
+        <div class="ml-4 pt-2", style="width:15vw;"><%= f.button :submit, class:"btn btn-outline-primary"%></div>
         <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
         <div class="d-flex justify-content-space-between fixed-bottom mx-3" style="width:70vw;padding-right:15px;padding-top:10px;background-color:#878cff;height:60px;border-left:1px light;">
         <%if current_user.id == @chatroom.booking.offer.user.id%>
@@ -83,6 +123,12 @@
 <%= link_to "Refuser", booking_refused_path(@chatroom.booking), class: "btn btn-secondary btn-sm" %><br>
 </div>
 <% else %>
+ 
+  <div class="d-flex" style="justify-content:space-between;">
+  <h1><%= @chatroom.booking.offer.user.name%></h1>
+  <%= cl_image_tag @chatroom.booking.offer.user.photo.key, class:"avatar", style:"border:1px solid;"%>
+  </div>
+  <svg width="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 <div class="d-flex" style="justify-content:space-between;">
 <h1><%= @chatroom.booking.user.name%></h1>
 <%= cl_image_tag @chatroom.booking.offer.user.photo.key, class:"avatar", style:"border:1px solid;"%>
