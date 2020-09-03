@@ -77,10 +77,18 @@
 </g>
 </svg>
 <div style=" text-align:left;">
+<%if @chatroom.booking.status == "Acceptée"%>
+<h4><%= @chatroom.booking.status%> ! </h4>  
+<%= link_to ('<i class="fas fa-file-contract fa-4x"></i>').html_safe, booking_path(@chatroom.booking, format: :pdf) , target:'_blank',:format => :pdf, method: :get, class: "btn-booking" %>
+<br>
+<%else%>
 <p>Status de la réservation: <strong><%= @chatroom.booking.status %></strong></p>
 <%= link_to "Accepter ", booking_accepter_path(@chatroom.booking), class: "btn btn-primary btn-sm" %><br>
 <br>
+<%end%>
+<br>
 <%= link_to "Refuser", booking_refused_path(@chatroom.booking), class: "btn btn-secondary btn-sm" %><br>
+
 </div>
 <% else %>
 <div class="d-flex" style="justify-content:space-between;">
