@@ -13,3 +13,13 @@ body {
   color: #3f3f44;
 }
 
+.colored_title:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: calc(50% - 2px);
+    width: calc(100% + 20px);
+    height: 15px;
+    background-color: rgb(255, 203, 211);
+}

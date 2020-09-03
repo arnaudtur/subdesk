@@ -80,12 +80,11 @@
           <div class="collapse-content">
 
             <!-- Text -->
-          <div class="d-flex justify-content-between">
+          <div class="text-align-left">
             <h4 class="font-weight-bold mb-2"><%= offer.user.name%></h4>
-            <p><i class="fas fa-male"></i> <%=offer.seats%></p>
 
           </div>
-            <p><%=offer.address%></p>
+          <p><%=offer.address%></p>
 
              <!-- Button -->
             <div class="float-right">
@@ -93,7 +92,9 @@
                     <span class="currency"><%= offer.price%>€</span>
                     <span class="month">/MOIS</span>
                 </span>
-
+            </div>
+            <div class="float-left">
+              <p><i class="fas fa-male"></i> <%=offer.seats%></p>
             </div>
 
 
