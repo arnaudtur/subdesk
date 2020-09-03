@@ -8,8 +8,6 @@
     border-radius: 10px;
   }
 
-
-
   .card-product img {
     margin-left: 15px;
     height: 80%;
@@ -90,14 +88,14 @@ outline: none !important;
   border-radius: 2px;
   display: inline-block;
   height: 400px;
-  margin: 1rem;
+  margin: 2rem;
   position: relative;
   width: 300px;
   border-radius: 7px;
   border-color: #fff;
   font-family: 'Poppins', cursive;
   color: #3f3f44;
-  box-shadow: 0px 15px 30px 0px rgba(167, 167, 167, 0.16);
+  box-shadow: 0px 15px 30px 0px rgba(167, 167, 167, 0.20);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 
   &:hover {
@@ -120,3 +118,9 @@ outline: none !important;
   }
 
 }
+
+.card-text {
+  font-size: 20px;
+}
+
+
