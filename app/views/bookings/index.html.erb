@@ -20,26 +20,26 @@
 
 </ul>
   <br>
-  <br>
-<br>
+<!--   <br>
+  <br> -->
 
 <div class="container-booking">
-<ul class="list-inline tabs-underlined justify-content-center" >
-  <li id="field">Entreprise
-  </li>
-  <li id="field">Matching
-  </li>
-  <li id="field">Statut
-  </li>
-  <li id="field">Action
-  </li>
-</ul>
+<div class="list-inline tabs-underlined justify-content-center px-3" >
+  <div class="w-25" id="field">Entreprise
+  </div>
+  <div class="w-25" id="field">Matching
+  </div>
+  <div class="w-25" id="field">Statut
+  </div>
+  <div class="w-25" id="field">Action
+  </div>
+</div>
 
 
 <% @bookings.each do |booking| %>
 
       <div class="card-content">
-        <div class="card-product">
+        <div class="card-product py-4 px-3">
         <div class="image-name-card">
           <% if current_user == booking.offer.user %>
             <%= cl_image_tag booking.user.photo.key, class:"border border-primary"  %>
@@ -64,41 +64,44 @@
         <div class="btn-part-booking">
         <% if current_user == booking.offer.user %>
           <% if booking.status == "En Attente" %>
-            <%= link_to ('<i class="far fa-comment-dots"></i>').html_safe, booking_accepter_discuss_path(booking), class: "btn-booking circle" %>
-            <%= link_to ('<i class="fas fa-times"></i>').html_safe, booking_refused_path(booking), class: "btn-booking circle" %>
+            <%= link_to ('<i class="far fa-comment-dots"></i>').html_safe, booking_accepter_discuss_path(booking), class: "btn-booking circle_purple" %>
+            <%= link_to ('<i class="fas fa-times"></i>').html_safe, booking_refused_path(booking), class: "btn-booking circle_red" %>
           <% elsif booking.status == "Discussion"   %>
-            <%= link_to ('<i class="far fa-comment-dots"></i>').html_safe, chatroom_path(booking.chatroom.id), method: :get, class: "btn-booking circle" %>
-            <%= link_to ('<i class="fas fa-check"></i>').html_safe, booking_accepter_path(booking), class: "btn-booking circle" %>
-            <%= link_to ('<i class="fas fa-times"></i>').html_safe, booking_refused_path(booking), class: "btn-booking circle" %>
+            <%= link_to ('<i class="far fa-comment-dots"></i>').html_safe, chatroom_path(booking.chatroom.id), method: :get, class: "btn-booking circle_purple" %>
+            <%= link_to ('<i class="fas fa-check"></i>').html_safe, booking_accepter_path(booking), class: "btn-booking circle_green" %>
+            <%= link_to ('<i class="fas fa-times"></i>').html_safe, booking_refused_path(booking), class: "btn-booking circle_red" %>
           <% else%>
           <% end%>
         <% else%>
           <% if booking.status == "En Attente" %>
-            <%= link_to ('<i class="fas fa-times"></i>').html_safe, booking_cancel_path(booking), method: :get, class: "btn-booking circle" %>
+            <%= link_to ('<i class="fas fa-times"></i>').html_safe, booking_cancel_path(booking), method: :get, class: "btn-booking circle_red" %>
           <% elsif booking.status == "Discussion"   %>
-            <%= link_to ('<i class="far fa-comment-dots"></i>').html_safe, chatroom_path(booking.chatroom.id), method: :get, class: "btn-booking circle" %>
-            <%= link_to ('<i class="fas fa-times"></i>').html_safe, booking_cancel_path(booking), method: :get, class: "btn-booking circle" %>
+            <%= link_to ('<i class="far fa-comment-dots"></i>').html_safe, chatroom_path(booking.chatroom.id), method: :get, class: "btn-booking circle_purple" %>
+            <%= link_to ('<i class="fas fa-times"></i>').html_safe, booking_cancel_path(booking), method: :get, class: "btn-booking circle_red" %>
           <% else%>
           <% end%>
         <% end%>
         </div>
       </div>
       <% if current_user == booking.offer.user %>
-        <button class="collapsible">Réponses à vos questions  <i class="fas fa-long-arrow-alt-down"></i></button>
+        <button class="collapsible">Réponses à vos questions <i class="fas fa-long-arrow-alt-down"></i></button>
       <% else %>
-        <button class="collapsible">Vos réponses aux questions  <i class="fas fa-long-arrow-alt-down"></i></button>
+        <button class="collapsible">Vos réponses aux questions <i class="fas fa-long-arrow-alt-down"></i></button>
         <% end %>
       <div class="content">
-        <h5><%= booking.offer.question1 %></h5>
-        <em><%= booking.answer1 %></em>
-        <h5><%= booking.offer.question2 %></h5>
-        <em><%= booking.answer2 %></em>
-        <h5><%= booking.offer.question3 %></h5>
-        <em><%= booking.answer3 %></em>
+        <div class="pt-2 pb-4">
+          <h5 class="h5_question"><%= booking.offer.question1 %></h5>
+          <em class="h5_answer"><%= booking.answer1 %></em>
+          <h5 class="h5_question"><%= booking.offer.question2 %></h5>
+          <em class="h5_answer"><%= booking.answer2 %></em>
+          <h5 class="h5_question"><%= booking.offer.question3 %></h5>
+          <em class="h5_answer"><%= booking.answer3 %></em>
+
+        </div>
       </div>
     </div>
     <br>
-    <br>
+    <!-- <br> -->
     <br>
   <% end %>
 </div>
