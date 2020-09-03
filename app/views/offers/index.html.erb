@@ -41,6 +41,7 @@
     </div>
   </div>
 </div>
+
 <div class="m-5" style="border-bottom: 1px solid black;">
   <h4 class="text-align pt-3 pl-5">
           <% cards_count = 0 %>
@@ -54,6 +55,7 @@
 
   </h4>
 </div>
+
 <div class="d-flex w-80">
   <div class="container align-items-center justify-content-center d-flex row">
 
@@ -80,11 +82,12 @@
           <div class="collapse-content">
 
             <!-- Text -->
-          <div class="text-align-left">
+          <div class="d-flex justify-content-between">
             <h4 class="font-weight-bold mb-2"><%= offer.user.name%></h4>
+            <p><i class="fas fa-male"></i> <%=offer.seats%></p>
 
           </div>
-          <p><%=offer.address%></p>
+            <p><%=offer.address%></p>
 
              <!-- Button -->
             <div class="float-right">
@@ -92,9 +95,7 @@
                     <span class="currency"><%= offer.price%>€</span>
                     <span class="month">/MOIS</span>
                 </span>
-            </div>
-            <div class="float-left">
-              <p><i class="fas fa-male"></i> <%=offer.seats%></p>
+
             </div>
 
 
