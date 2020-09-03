@@ -1,5 +1,32 @@
 <div style="padding-bottom:120px;"></div>
-
+  <div class="d-flex">
+    <div class="container col-8 fixed-left">
+      <div class="card"  style="width:70vw;border-radius:8px; border:1px solid; min-height:80vh;text-align:left;margin-bottom:50px;padding-left:16px;">
+      <div class="card-body">
+      <div class="row">
+      <h1><%= @chatroom.name %></h1>
+      <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+      <% @chatroom.messages.each do |message| %>
+      <div class="message-container" id="message-<%= message.id %>">
+      <%if current_user.id != message.user.id%>
+        <div style="text-decoration: underline;">
+        <small style="font-weight:bold;">
+        <span><%= "#{message.user.name}, le" %></span>
+        <%= message.created_at.strftime("%d/%m/%y à %H:%M :") %>
+        </small>
+        </div>
+        <p><%= message.content %></p>
+      <%else%>
+        <div style="text-decoration: underline;">
+        <small style="font-weight:bold;">
+        <span><%= "#{message.user.name} (vous), le" %></span>
+        <%= message.created_at.strftime("%d/%m/%y à %H:%M :") %>
+        </small>
+        </div>
+        <p><%= message.content %></p>
+      <%end%>
+        </div>
+      <% end %>
 <div class="container justify-content-center" style="position:relative;">
 <div class="card"  style="border-radius:8px; border:1px solid; min-height:80vh;text-align: left;">
 <div class="card-body">
@@ -41,20 +68,33 @@
         <div class="pl-4 pt-2", style="width:63vw;"><%= f.input :content, label: false, placeholder: "Envoyez un message a votre futur loueur!" %></div>
     <%end%>
         <div class="ml-4 pt-2", style="width:15vw;"><%= f.button :submit, class:"btn btn-outline-primary"%></div>
+        <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+        <div class="d-flex justify-content-space-between fixed-bottom mx-3" style="width:70vw;padding-right:15px;padding-top:10px;background-color:#878cff;height:60px;border-left:1px light;">
+        <%if current_user.id == @chatroom.booking.offer.user.id%>
+          <div class="pl-4 pt-2", style="width:50vw;"><%= f.input :content, label: false, placeholder: "Envoyez un message a votre futur locataire!" %></div>
+        <%else%>
+          <div class="pl-4 pt-2", style="width:50vw;"><%= f.input :content, label: false, placeholder: "Envoyez un message a votre futur loueur!" %></div>
+        <%end%>
+        <div class="ml-4 pt-2", style="width:15vw;"><%= f.button :submit, "Envoyer le message",class:"btn btn-subdeskchatroom"%></div>
+        </div>
+        <% end %>
       </div>
-  <% end %>
+    </div>
   </div>
-  </div>
+
+
+</div>
 </div>
 
+
 <div class="col-4">
-<div class="card" id="deskcafe" style="width: 16rem; padding: 16px; border-radius:8px;position: -webkit-sticky; position: sticky;border-left:1px solid;border-bottom:1px solid; position:absolute; right:30px;">
+<div class="card" id="deskcafe" style="width: 14vw; padding: 8px; border-radius:8px;  position: absolute; left: 10em; width: 20vw; height: 23em;">
 <% if @current_user.id == @chatroom.booking.offer.user.id%>
-  <div class="d-flex" style="justify-content:space-between;">
-  <h1><%= @chatroom.booking.user.name%></h1>
-  <%= cl_image_tag @chatroom.booking.user.photo.key, class:"avatar", style:"border:1px solid;"%>
-  </div>
-  <svg width="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<div class="d-flex" style="justify-content:space-between;">
+<h1><%= @chatroom.booking.user.name%></h1>
+<%= cl_image_tag @chatroom.booking.user.photo.key, class:"avatar", style:"border:1px solid;"%>
+</div>
+<svg width="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="study">
 <rect width="64"/>
 <g id="smoke">
@@ -76,15 +116,24 @@
 </g>
 </g>
 </svg>
-  <p>Status of the booking: <strong><%= @chatroom.booking.status %></strong></p>
-  <%= link_to "Accepter ", booking_accepter_path(@chatroom.booking), class: "btn btn-primary btn-sm" %><br>
-  <%= link_to "Refuser", booking_refused_path(@chatroom.booking), class: "btn btn-secondary btn-sm" %><br>
+<div style=" text-align:left;">
+<p>Status de la réservation: <strong><%= @chatroom.booking.status %></strong></p>
+<%= link_to "Accepter ", booking_accepter_path(@chatroom.booking), class: "btn btn-primary btn-sm" %><br>
+<br>
+<%= link_to "Refuser", booking_refused_path(@chatroom.booking), class: "btn btn-secondary btn-sm" %><br>
+</div>
 <% else %>
+ 
   <div class="d-flex" style="justify-content:space-between;">
   <h1><%= @chatroom.booking.offer.user.name%></h1>
   <%= cl_image_tag @chatroom.booking.offer.user.photo.key, class:"avatar", style:"border:1px solid;"%>
   </div>
   <svg width="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<div class="d-flex" style="justify-content:space-between;">
+<h1><%= @chatroom.booking.user.name%></h1>
+<%= cl_image_tag @chatroom.booking.offer.user.photo.key, class:"avatar", style:"border:1px solid;"%>
+</div>
+<svg width="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="study">
 <rect width="64"/>
 <g id="smoke">
@@ -107,14 +156,13 @@
 
 </g>
 </svg>
-  <p>Status of the booking: <strong><%= @chatroom.booking.status %></strong></p>
-  <p>Seats available: <strong><%= @chatroom.booking.offer.seats %></strong></p>
-  <p>Price per seat: <strong><%= @chatroom.booking.offer.price %></strong></p>
-  <%= link_to "Annuler", booking_cancel_path(@chatroom.booking), class: "btn btn-secondary btn-sm" %><br>
-<%end%>
-
+<div style=" text-align:left;">
+<p>Status de la réservation: <strong><%= @chatroom.booking.status %></strong></p>
+<p>Sièges disponibles: <strong><%= @chatroom.booking.offer.seats %></strong></p>
+<p>prix par siège: <strong><%= @chatroom.booking.offer.price %></strong></p>
+<%= link_to "Annuler", booking_cancel_path(@chatroom.booking), class: "btn btn-secondary btn-sm" %><br>
 </div>
-
+<%end%>
 </div>
 </div>
 </div>

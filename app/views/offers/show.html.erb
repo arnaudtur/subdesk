@@ -16,7 +16,9 @@
     <div class="col">
     <div class="card" style="width: 16rem; padding: 16px; border-radius:8px;position: -webkit-sticky; position: sticky; top: 20px;">
     <h4 class="mx-auto"><strong><%=@offer.user.name%></strong></h4>
+    <%= link_to user_path(@offer.user_id) do %>
     <%= cl_image_tag @offer.user.photo.key, class:"img-thumbnail"%>
+    <%end%>
     <div style="text-align:left; font-size:14px;">
     <br>
     <p><%=@offer.address%></p>
@@ -25,7 +27,6 @@
     </div>
     <%if @offer.user != current_user%>
     <%= link_to "J'emménage", new_offer_booking_path(params[:id]), class:"btn btn-subdesk" %>
-    <%= link_to "Profil", user_path(@offer.user_id), class:"btn btn-subdesk", style:"margin-top:15px;" %>
     <%else%>
     <%= link_to 'Modifier votre offre', edit_offer_path, class:"btn btn-subdesk"%>
     <%= button_to "Supprimer l'offre", {:controller => :offers,

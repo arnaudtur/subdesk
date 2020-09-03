@@ -1,3 +1,13 @@
+.btn-subdeskchatroom {
+  background: $light-gray;
+  color: $purple;
+  &:hover {
+    background:$purple;
+    color:$light-gray;
+  }
+
+}
+
 .btn-subdesk {
   background: $purple;
   padding: 15px 30px;
