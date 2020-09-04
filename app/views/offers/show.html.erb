@@ -19,7 +19,7 @@
     <%= link_to user_path(@offer.user_id) do %>
     <%= cl_image_tag @offer.user.photo.key, class:"img-thumbnail"%>
     <%end%>
-    <div style="text-align:left; font-size:14px;">
+    <div style="text-align:left; font-size:18px;" class="px-4">
     <br>
     <p><i class="fas fa-map-marker"></i> <%=@offer.address%> </p>
     <p><i class="fas fa-male"></i> <%=@offer.seats%> </p>
