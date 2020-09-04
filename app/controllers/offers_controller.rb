@@ -6,8 +6,8 @@ class OffersController < ApplicationController
     if (params[:address].present? || params[:price].present? || params[:seats].present? || params[:rooms].present?)
       @offers = Offer.where("address Ilike ?", "%#{params[:address]}%") if params[:address]
       price = Offer.where("price ILIKE :price")
-      min_price = params[:price].to_i - 300
-      max_price = params[:price].to_i + 300
+      min_price = params[:price].to_i - 1000
+      max_price = params[:price].to_i + 51
       @offers = @offers.where("price > ?", min_price).where("price < ?", max_price) if params[:price].present?
       seats = Offer.where("seats ILIKE :seats")
       max_seats = params[:seats].to_i + 5
