@@ -222,6 +222,32 @@ outline: none !important;
   }
 }
 
+.card-other-deck {
+      display: flex;
+      margin-right: -15px;
+      margin-left: -15px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 2px;
+    display: inline-block;
+    height: 400px;
+    margin: 2rem;
+    position: relative;
+    width: 300px;
+    border-radius: 7px;
+    border-color: #fff;
+    font-family: 'Poppins', cursive;
+    color: #3f3f44;
+    box-shadow: 0px 15px 30px 0px rgba(167, 167, 167, 0.20);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+    &:hover {
+      box-shadow: 0 15px 30px rgb(239, 240, 255);
+      border-color: $purple ;
+    }
+}
 
 .headerindex {
   form {
