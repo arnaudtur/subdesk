@@ -22,9 +22,9 @@
             <%if @notifications.length > 0%>
             <i class="fas fa-bell fa-lg" style="color:red;"></i><span>
             <%if @notifications.length == 1%>
-              <%= "#{@notifications.length}"%><i class="fas fa-envelope" style="padding-left:5px;"></i>
+              <span style="color:white;"><%= "#{@notifications.length}"%><i class="fas fa-envelope" style="padding-left:5px; color:white"></i></span>
             <%else%>
-              <%= "#{@notifications.length}"%><i class="fas fa-envelope" style="padding-left:5px;"></i>
+              <span><%= "#{@notifications.length}"%><i class="fas fa-envelope" style="padding-left:5px;color:white;"></i></span>
             <%end%>
             </span>
             <%@notificationsuni = @notifications.uniq { |notif| notif.actor}%>
