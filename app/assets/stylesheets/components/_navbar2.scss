@@ -48,5 +48,12 @@ border-bottom: 2px solid #6b71ff;
 }
 
 
+.dropdown-item:hover{
+    color: white;
+    text-decoration: none;
+    background-color: #6b71ff;
+}
 
-
+a.dropdown-item {
+    color: #6b71ff;
+}
