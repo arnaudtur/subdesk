@@ -63,7 +63,7 @@
       <% if offer.user ==  current_user %>
       <% else %>
       <%= link_to offer_path(offer.id) do%>
-      <div class="card promoting-card mb-5 ml-5 d-flex" style="width: 350px; border-radius: 10px;">
+      <div class="card promoting-card mb-5 ml-5 d-flex" style="width: 320px; border-radius: 10px;">
 
 
         <!-- Card image -->
@@ -112,7 +112,7 @@
     <%end%>
   </div>
   <div id="map" class="map1 mr-5"
-       style="width: 100%; height: 100vh;"
+       style="width: 75%; height: 100vh;"
        data-markers="<%= @markers.to_json %>"
        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
