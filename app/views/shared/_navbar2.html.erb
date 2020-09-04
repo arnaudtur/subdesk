@@ -31,7 +31,7 @@
             <div class="dropdown-menu" data-behavior="notification-items" style="margin-top:12px;">
               <% @notificationsuni.each do |notif|%>
                 <%if @notifications.select(notif.actor_id).select(notif.recipient_id).length == 1 %>
-                  <%= link_to "nouveau message de #{notif.notifiable_type} #{notif.actor.name}", chatroom_path(notif.notifiable.chatroom), class:"dropdown-item", style:"color:#878cff; font-weight:bold;", id:"notif"%>
+                  <%= link_to "nouveau message de #{notif.notifiable_type} #{notif.actor.name}", chatroom_path(notif.notifiable.chatroom), class:"dropdown-item", style:"font-weight: bold", id:"notif"%>
                 <%else%>
                   <%= link_to "nouveaux messages de #{notif.notifiable_type} #{notif.actor.name}", chatroom_path(notif.notifiable.chatroom), class:"dropdown-item", style:"background-color:#878cff;", id:"notif"%>
                 <%end%>
